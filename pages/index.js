@@ -16,3 +16,6 @@ export default function Home(){
   )
 
 }
+
+// https://javascript.plainenglish.io/how-to-create-light-and-dark-mode-toggle-in-next-js-with-tailwind-61e67518fd2d
+// https://egghead.io/blog/tailwindcss-dark-mode-nextjs-typography-prose

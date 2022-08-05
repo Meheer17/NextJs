@@ -14,12 +14,19 @@
   "author": "Meheer",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1189.0",
+    "body-parser": "^1.20.0",
+    "fs": "^0.0.1-security",
     "isomorphic-unfetch": "^3.1.0",
     "mongoose": "^6.5.0",
+    "multer": "^1.4.5-lts.1",
     "next": "^12.2.3",
+    "next-connect": "^0.13.0",
     "next-themes": "^0.2.0",
+    "path": "^0.12.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "util": "^0.12.4"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.4",

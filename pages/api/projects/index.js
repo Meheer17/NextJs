@@ -11,7 +11,7 @@ export default async (req, res) => {
     case 'GET':
       try {
         const project = await Project.find({})
-        res.status(200).json({success: true, project: project})
+        res.status(200).json({success: true, data: project})
       } catch (error) {
         res.status(400).json({success:false});
       }

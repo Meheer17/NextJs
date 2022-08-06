@@ -52,7 +52,7 @@ export default function Navbar() {
             </div>
 
             <div className="items-center hidden md:flex">
-              <Link href='/new-post'><a className="py-4 px-2 text-gray-900 font-semibold transition duration-300 hover:text-blue-500">Home</a></Link>
+              <Link href='/'><a className="py-4 px-2 text-gray-900 font-semibold transition duration-300 hover:text-blue-500">Home</a></Link>
               <Link href='/projects'><a className="py-4 px-2 text-gray-900 font-semibold transition duration-300 hover:text-blue-500">Projects</a></Link>
               <Link href='/certificates'><a className="py-4 px-2 text-gray-900 font-semibold transition duration-300 hover:text-blue-500">Certificates</a></Link>
               <button className="py-4 text-xl px-2 text-gray-900 font-semibold transition duration-300 hover:text-blue-500" onClick={dar} >{theme == "light" ? IcRoundDarkMode() : MaterialSymbolsLightMode()}</button>

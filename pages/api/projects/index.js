@@ -1,7 +1,7 @@
-import connect from '../../../components/db'
-import {Project} from '../../../models/project'
+import dbConnect from '../../../utils/db'
+import Project from '../../../models/Project'
 
-connect()
+dbConnect()
 
 export default async (req, res) => {
   const {method} = req;

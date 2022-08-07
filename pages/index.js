@@ -1,6 +1,8 @@
 import Head from 'next/head';
+import {useState} from 'react'
 import Layout from '../components/layout';
-import fetch from 'isomorphic-unfetch'
+// import {loadPosts} from '../lib/loadData'
+
 
 export default function Home({data}){
   return(
@@ -25,6 +27,11 @@ export default function Home({data}){
       
     </Layout>
   )
+}
+Home.getInitialProps = async () => {
+  const res = await fetch('http:/localhost:3000/api/projects');
+  const { data } = await res.json();
+  return { data: data }
 }
 
 // https://javascript.plainenglish.io/how-to-create-light-and-dark-mode-toggle-in-next-js-with-tailwind-61e67518fd2d

@@ -20,13 +20,16 @@ export default async (req, res) => {
     case 'POST':
       const der = new Project({title: req.body.title, description: req.body.description, learnt: req.body.learnt, link: req.body.link, github: req.body.github});
       try {
-        await der.save()
-        res.status(200).json({success: true})
+        const project = await der.save()
+        res.status(200).json({success: true, data: project})
       } catch (error) {
         console.log(error)
         res.status(400).json({success: false})
       }
       break;
 
+    default:
+      res.status(400).json({success: false})
+      break;
   }
 }

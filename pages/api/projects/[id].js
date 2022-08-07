@@ -1,5 +1,5 @@
 import dbConnect from '../../../utils/db'
-import Project from '../../../models/project'
+import Project from '../../../models/Project'
 
 dbConnect()
 

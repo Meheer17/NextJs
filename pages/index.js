@@ -1,12 +1,11 @@
-import Link from 'next/link'
+import Image from 'next/image'
 import Head from 'next/head'
 import Script from 'next/script'
-import Layout from '../components/layout'
 import fetch from 'isomorphic-unfetch';
 
 const Index = ({ notes }) => {
   return(
-    <Layout>
+    <>
       <Head>
         <title>Home</title>
       </Head>
@@ -15,16 +14,17 @@ const Index = ({ notes }) => {
       {notes.map(note => {
           return (
             <div key={note._id}>
-             <h1>{note.title}</h1>
+             <h1>{note.description}</h1>
+             <Image height={100} width={100} src={note.title}/>
             </div>
           )
         })}
-    </Layout>
+    </>
   )
 }
 
 Index.getInitialProps = async () => {
-  const res = await fetch('https://NextJs.meheer007.repl.co/api/projects');
+  const res = await fetch('http://localhost:3000/api/projects');
   const { data } = await res.json();
   return { notes: data }
 }

@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
-import Layout from '../components/layout'
 
 export default function NewProject() {
     const [form, setForm] = useState({title:"", description:'', learnt:"", link:'', github:''})
@@ -23,7 +22,7 @@ export default function NewProject() {
 
     const createProject = async () => {
         try {
-            const res = await fetch('https://NextJs.meheer007.repl.co/api/projects/', {
+            const res = await fetch('http://localhost:3000/api/projects/', {
                 method: 'POST',
                 headers:{
                     "Accept":"applocation/json",
@@ -62,7 +61,7 @@ export default function NewProject() {
     }
 
     return(
-        <Layout> 
+        <> 
             <h1 className="text-center text-2xl text-gray-800 font-serif">Create A New Project Detail</h1>
             
            {
@@ -99,7 +98,7 @@ export default function NewProject() {
                 </div>
             )
            }
-        </Layout>
+        </>
     )
 }
 

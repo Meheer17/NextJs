@@ -15,7 +15,7 @@ export default function Footer(){
         </ul>
       </div>
       <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-      <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <Link href="/"><a className="hover:underline"></a></Link> Created By Meheer.</span>
+      <div className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <Link href="/"><a className="hover:underline"></a></Link> Created By Meheer.</div>
     </footer>
     
   )

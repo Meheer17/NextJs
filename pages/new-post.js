@@ -21,7 +21,7 @@ export default function NewProject() {
 
     const createProject = async () => {
         try {
-            const res = await fetch('/api/projects/', {
+            const res = await fetch(`${process.env.URL}/api/projects`, {
                 method: 'POST',
                 headers:{
                     "Accept":"applocation/json",

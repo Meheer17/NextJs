@@ -28,7 +28,7 @@ const Index = ({ notes }) => {
 }
 
 Index.getInitialProps = async () => {
-  const res = await fetch('https://nextjs.meheer007.repl.co/api/projects');
+  const res = await fetch(`${process.env.URL}/api/projects`);
   const { data } = await res.json();
   return { notes: data }
 }

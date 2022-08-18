@@ -3,7 +3,7 @@ import Project from '../../../models/Project'
 
 dbConnect()
 
-export default async (req, res) => {
+export default async function handler(req, res){
   const {method} = req;
 
   switch (method) {

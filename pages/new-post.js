@@ -20,7 +20,7 @@ export default function NewProject() {
 
     const createProject = async () => {
         try {
-            const res = await fetch(`http://localhost:3001/api/projects`, {
+            const res = await fetch(`${process.env.URL}/api/projects`, {
                 method: 'POST',
                 headers:{
                     "Accept":"applocation/json",
@@ -36,7 +36,7 @@ export default function NewProject() {
 
     async function handleImg() {
         try {
-            const res = await fetch(`http://localhost:3001/api/projects/s3`, {
+            const res = await fetch(`${process.env.URL}/api/projects/s3`, {
                 method: 'POST',
                 encType:'multipart/form-data'
             })

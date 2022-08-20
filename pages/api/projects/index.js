@@ -18,7 +18,7 @@ export default async function handler(req, res){
       break;
 
     case 'POST':
-      const der = new Project({title: req.body.title, description: req.body.description, learnt: req.body.learnt, link: req.body.link, github: req.body.github, pri: req.body.pri, tags: req.body.tags});
+      const der = new Project({title: req.body.title, description: req.body.description, learnt: req.body.learnt,image: req.body.image, link: req.body.link, github: req.body.github, pri: req.body.pri, tags: req.body.tags});
       try {
         const project = await der.save()
         res.status(200).json({success: true, data: project})

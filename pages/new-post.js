@@ -1,10 +1,9 @@
-import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 
 export default function NewProject() {
-    const [form, setForm] = useState({title:"", description:'', learnt:"", link:'', github:'', pri:0, tags:[]})
+    const [form, setForm] = useState({title:"", description:'', learnt:"", link:'', github:'', pri:0, tags:[], image: ''})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
@@ -21,7 +20,7 @@ export default function NewProject() {
 
     const createProject = async () => {
         try {
-            const res = await fetch(`${process.env.URL}/api/projects`, {
+            const res = await fetch(`http://localhost:3001/api/projects`, {
                 method: 'POST',
                 headers:{
                     "Accept":"applocation/json",
@@ -32,6 +31,23 @@ export default function NewProject() {
             router.push('/')
         } catch (error) {
             console.log(error)
+        }
+    }
+
+    async function handleImg() {
+        try {
+            const res = await fetch(`http://localhost:3001/api/projects/s3`, {
+                method: 'POST',
+                encType:'multipart/form-data'
+            })
+            const {data} = res.json()
+            setForm({
+                ...form, 
+                [form.image]: data
+            })
+
+        } catch (error) {
+            
         }
     }
 
@@ -60,8 +76,8 @@ export default function NewProject() {
         [e.target.name]: e.target.value
        }) 
     }
+
     function handleTags(e){
-      var tags = []
       var tag = e.target.value.split(",")
        setForm({
         ...form,
@@ -108,8 +124,8 @@ export default function NewProject() {
                             <input onChange={handleTags} type="text" name='tags' id="tags" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
                         </div>
 
-                        {/* <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="image">Upload file</label>
-                        <input onChange={handleChange} name='image' className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none " id="image" type="file"/> */}
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Upload file</label>
+                        <input onChange={handleImg} name='avatar' className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none " id="avatar" type="file"/>
 
                         <button type="submit" className="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Submit</button>
                     </form>

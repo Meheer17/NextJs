@@ -16,7 +16,7 @@ export default async (req, res) => {
           return res.status(400).json({success: false})
         }
 
-        res.status(200).json({success: true, project: project})
+        res.status(200).json({success: true, data: project})
 
       } catch (error) {
         res.status(400).json({success: false})
@@ -31,7 +31,7 @@ export default async (req, res) => {
           return res.status(400).json({success: false})
         }
 
-        res.status(200).json({success: true, project: project})
+        res.status(200).json({success: true, data: project})
 
       } catch (error) {
         res.status(400).json({success: false})
@@ -44,7 +44,7 @@ export default async (req, res) => {
         if(!del){
           return res.status(400).json({success: false})
         }
-        res.status(200).json({success: true, del: del})
+        res.status(200).json({success: true, data: del})
       } catch (error) {
         res.status(400).json({success: false})
       }

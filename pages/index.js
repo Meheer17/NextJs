@@ -27,10 +27,6 @@ const Index = ({ notes }) => {
   )
 }
 
-function getURL() {
-  alert("The URL of this page is: " + window.location.href);
-}
-
 export async function getServerSideProps() {
   // Fetch data from external API
   const res = await fetch(`${process.env.URL}/api/projects`);

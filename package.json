@@ -14,8 +14,10 @@
   "author": "Meheer",
   "license": "ISC",
   "dependencies": {
+    "aws-s3-upload-ash": "^1.1.4",
     "aws-sdk": "^2.1189.0",
     "body-parser": "^1.20.0",
+    "constructs": "^10.1.82",
     "fs": "^0.0.1-security",
     "isomorphic-unfetch": "^3.1.0",
     "mongoose": "^6.5.0",
@@ -31,8 +33,10 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.4",
+    "@types/react": "^18.0.17",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
-    "tailwindcss": "^3.1.6"
+    "tailwindcss": "^3.1.6",
+    "typescript": "^4.7.4"
   }
 }

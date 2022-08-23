@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 
 export default function NewProject() {
-    const [form, setForm] = useState({title:"", description:'', learnt:"", link:'', github:'', pri:0, tags:[], image: ''})
+    const [form, setForm] = useState({title:"", description:'', learnt:"", link:'', github:'', pri:0, tags:[], image: 'Link is here'})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
@@ -20,7 +20,7 @@ export default function NewProject() {
 
     const createProject = async () => {
         try {
-            const res = await fetch(`${process.env.URL}/api/projects`, {
+            const res = await fetch(`http://localhost:3000/api/projects`, {
                 method: 'POST',
                 headers:{
                     "Accept":"applocation/json",
@@ -34,22 +34,32 @@ export default function NewProject() {
         }
     }
 
-    async function handleImg() {
-        try {
-            const res = await fetch(`${process.env.URL}/api/projects/s3`, {
-                method: 'POST',
-                encType:'multipart/form-data'
-            })
-            const {data} = res.json()
-            setForm({
-                ...form, 
-                [form.image]: data
-            })
-
-        } catch (error) {
-            
+    const uploadPhoto = async (e) => {
+        const file = e.target.files[0]
+        const filename = encodeURIComponent(file.name)
+        const fileType = encodeURIComponent(file.type)
+      
+        const res = await fetch(
+          `/api/projects/s3?file=${filename}&fileType=${fileType}`
+        )
+        const { url, fields } = await res.json()
+        const formData = new FormData()
+      
+        Object.entries({ ...fields, file }).forEach(([key, value]) => {
+          formData.append(key, value)
+        })
+      
+        const upload = await fetch(url, {
+          method: 'POST',
+          body: formData,
+        })
+      
+        if (upload.ok) {
+          console.log('Uploaded successfully!')
+        } else {
+          console.error('Upload failed.')
         }
-    }
+      }
 
     function handleSubmit(e){
         e.preventDefault()
@@ -125,7 +135,7 @@ export default function NewProject() {
                         </div>
 
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Upload file</label>
-                        <input onChange={handleImg} name='avatar' className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none " id="avatar" type="file"/>
+                        <input onChange={uploadPhoto} name='avatar' className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none " id="avatar" type="file"/>
 
                         <button type="submit" className="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Submit</button>
                     </form>

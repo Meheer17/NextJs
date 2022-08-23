@@ -11,10 +11,12 @@ const Index = ({ notes }) => {
       </Head>
       
       <h1 className="text-sky-600 text-2xl text-center">Home</h1>
+      <div className='grid grid-cols-3 gap-4 place-content-evenly'>
+
       {notes.map(note => {
           return (
-            <div key={note._id} className="bg-slate-500 m-2 p-3 rounded-sm w-full md:w-1/3">
-              <Image src={note.image} height={500} width={1000}/>
+            <div key={note._id} className="bg-slate-500 m-2 p-3 rounded-sm w-full">
+              <div><Image src={note.image} height={500} width={1000} priority/></div>
               <h1 className="italic font-extrabold capitalize text-2xl text-center underline-offset-0 underline">{note.title}</h1>
               <div className="font-medium text-justify text-lg">{note.description}</div>
               <div className="underline mt-5 italic underline-offset-0 font-bold text-xl">What Have I Learnt?</div>
@@ -24,6 +26,9 @@ const Index = ({ notes }) => {
             </div>
           )
         })}
+
+      </div>
+     
     </>
   )
 }

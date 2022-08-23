@@ -15,9 +15,11 @@
   "license": "ISC",
   "dependencies": {
     "aws-s3-upload-ash": "^1.1.4",
-    "aws-sdk": "^2.1189.0",
+    "aws-sdk": "^2.1200.0",
     "body-parser": "^1.20.0",
     "constructs": "^10.1.82",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "fs": "^0.0.1-security",
     "isomorphic-unfetch": "^3.1.0",
     "mongoose": "^6.5.0",

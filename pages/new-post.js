@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
+import Image from 'next/image'
 
 export default function NewProject() {
     const [form, setForm] = useState({title:"", description:'', learnt:"", link:'', github:'', pri:0, tags:[], image: 'Link is here'})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
+    const [im, setIm] = useState(false)
 
     useEffect(() => {
         if(isSubmitting){
@@ -19,6 +21,7 @@ export default function NewProject() {
     }, [errors])
 
     const createProject = async () => {
+        console.log(form)
         try {
             const res = await fetch(`http://localhost:3000/api/projects`, {
                 method: 'POST',
@@ -33,33 +36,6 @@ export default function NewProject() {
             console.log(error)
         }
     }
-
-    const uploadPhoto = async (e) => {
-        const file = e.target.files[0]
-        const filename = encodeURIComponent(file.name)
-        const fileType = encodeURIComponent(file.type)
-      
-        const res = await fetch(
-          `/api/projects/s3?file=${filename}&fileType=${fileType}`
-        )
-        const { url, fields } = await res.json()
-        const formData = new FormData()
-      
-        Object.entries({ ...fields, file }).forEach(([key, value]) => {
-          formData.append(key, value)
-        })
-      
-        const upload = await fetch(url, {
-          method: 'POST',
-          body: formData,
-        })
-      
-        if (upload.ok) {
-          console.log('Uploaded successfully!')
-        } else {
-          console.error('Upload failed.')
-        }
-      }
 
     function handleSubmit(e){
         e.preventDefault()
@@ -76,25 +52,70 @@ export default function NewProject() {
         if(!form.learnt){err.learnt = "learnt is required"}
         if(!form.tags){err.tags = "tags is required"}
         if(!form.pri){err.pri = "Priority num is required"}
-        // if(!form.image){err.image = "img is required"}
+        if(!form.image){err.image = "img is required"}
         return err
     }
 
-    function handleChange(e){
-       setForm({
-        ...form,
-        [e.target.name]: e.target.value
-       }) 
+    const uploadPhoto = async (e) => {
+        const file = e.target.files[0]
+    
+        const res = await fetch(`/api/projects/s3`)
+        const { url } = await res.json()
+        
+        const upload = await fetch(url, {
+          method: 'PUT',
+          headers: {
+            "Content-Type": "multipart/form-data"
+          },
+          body: file
+        })
+        if (upload.ok) {
+          console.log('Uploaded successfully!')
+        } else {
+          console.error('Upload failed.')
+        }
+
+        const imageUrl = url.split('?')[0]
+        setForm({...form, image: imageUrl})
+        setIm(true)
+
     }
 
-    function handleTags(e){
-      var tag = e.target.value.split(",")
-       setForm({
-        ...form,
-        tags: tag
-       }) 
+    
+    function handleChange(e){
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        }) 
     }
-  
+    
+    function handleTags(e){
+        var tag = e.target.value.split(",")
+        setForm({
+            ...form,
+            tags: tag
+        }) 
+    }
+    
+    const Upload = () =>  {
+        return(
+            <>
+                { im ? <><div className='mb-2'><Image height={500} width={1000} className='mb-2' src={form.image} /></div></> : 
+                    ( 
+                    <>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Upload file</label>
+                        <input
+                            onChange={uploadPhoto}
+                            className="block w-full text-sm mb-2 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none "
+                            type="file"
+                            accept="image/png, image/jpeg"
+                            /> 
+                    </>
+                    )
+                }
+            </>
+        )
+    }
 
     return(
         <> 
@@ -105,6 +126,7 @@ export default function NewProject() {
 
                 <div className="p-10 drop-shadow-xl ">
                     <form className="mx-auto max-w-5xl p-5 border-2 border-slate-900 rounded-md" onSubmit={handleSubmit}>
+                        <Upload/>
                         <div className="mb-6">
                             <label className="block mb-2 text-sm font-medium text-gray-900 ">Title</label>
                             <input onChange={handleChange} type="text" id="title" name='title' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
@@ -133,9 +155,6 @@ export default function NewProject() {
                             <label className="block mb-2 text-sm font-medium text-gray-900 ">Tags</label>
                             <input onChange={handleTags} type="text" name='tags' id="tags" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
                         </div>
-
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Upload file</label>
-                        <input onChange={uploadPhoto} name='avatar' className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none " id="avatar" type="file"/>
 
                         <button type="submit" className="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Submit</button>
                     </form>

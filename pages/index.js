@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Head from 'next/head'
-import Script from 'next/script'
+import Link from 'next/link'
 import fetch from 'isomorphic-unfetch';
 
 const Index = ({ notes }) => {
@@ -14,12 +14,13 @@ const Index = ({ notes }) => {
       {notes.map(note => {
           return (
             <div key={note._id} className="bg-slate-500 m-2 p-3 rounded-sm w-full md:w-1/3">
+              <Image src={note.image} height={500} width={1000}/>
               <h1 className="italic font-extrabold capitalize text-2xl text-center underline-offset-0 underline">{note.title}</h1>
               <div className="font-medium text-justify text-lg">{note.description}</div>
               <div className="underline mt-5 italic underline-offset-0 font-bold text-xl">What Have I Learnt?</div>
-              <div className="font-medium text-lg text-justify">{note.learnt}</div>
-              <button className="bg-rose-400 mt-4 rounded-lg p-2 mr-3 inline">View</button>
-              <button className="bg-rose-400 mt-4 rounded-lg p-2 inline">View</button>
+              <div className="font-medium text-lg mb-3 text-justify">{note.learnt}</div>
+              <Link href={note.link}><a className="bg-rose-400 mt-2 rounded-lg p-2 inline">View</a></Link>
+              <Link href={note.github}><a className="bg-rose-400 m-2 rounded-lg p-2 inline">View</a></Link>
             </div>
           )
         })}

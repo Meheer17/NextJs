@@ -4,8 +4,6 @@ module.exports = {
       URL:"https://next-js-opal-xi.vercel.app/",
       B_NAME: "website-bucket-meheer",
       B_REGION: "ap-south-1",
-      B_A_KEY: "AKIASPC62OMHRMDT6ERA",
-      B_S_KEY: "qq9v1fI4yxvaRXsO1cPDAVg0MbWxzZLWozJhTIJ+"
   },
   images: {
     domains: ['website-bucket-meheer.s3.ap-south-1.amazonaws.com'],

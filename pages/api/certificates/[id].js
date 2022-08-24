@@ -1,5 +1,5 @@
 import dbConnect from '../../../utils/db'
-import Project from '../../../models/Project'
+import Certificate from '../../../models/Certificate'
 
 dbConnect()
 
@@ -10,13 +10,13 @@ export default async (req, res) => {
 
     case 'GET':
       try {
-        const project = await Project.findById(id)
+        const Certificate = await Certificate.findById(id)
 
-        if(!project){
+        if(!Certificate){
           return res.status(400).json({success: false})
         }
 
-        res.status(200).json({success: true, data: project})
+        res.status(200).json({success: true, data: Certificate})
 
       } catch (error) {
         res.status(400).json({success: false})
@@ -25,13 +25,13 @@ export default async (req, res) => {
     
     case "PUT":
       try {
-        const project = await Project.findByIdAndUpdate(id, {title: req.body.title, description: req.body.description, learnt: req.body.learnt,image: req.body.image, link: req.body.link, github: req.body.github, pri: req.body.pri, tags: req.body.tags}, {new:true , runValidators: true})
+        const Certificate = await Certificate.findByIdAndUpdate(id, {title: req.body.title, description: req.body.description, image: req.body.image, link: req.body.link}, {new:true , runValidators: true})
 
-        if(!project){
+        if(!Certificate){
           return res.status(400).json({success: false})
         }
 
-        res.status(200).json({success: true, data: project})
+        res.status(200).json({success: true, data: Certificate})
 
       } catch (error) {
         res.status(400).json({success: false})
@@ -40,7 +40,7 @@ export default async (req, res) => {
     
     case "DELETE":
       try {
-        const del = await Project.findByIdAndDelete({_id : id})
+        const del = await Certificate.findByIdAndDelete({_id : id})
         if(!del){
           return res.status(400).json({success: false})
         }

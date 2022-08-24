@@ -1,21 +1,14 @@
 import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 import Image from 'next/image'
 
-export async function getServerSideProps(ctx) {
-    const id = ctx.params.id
-    const res = await fetch(`${process.env.URL}/api/projects/${id}`);
-    const { data } = await res.json();
-    return { props: {details: data, fileId: id}}
-}
-
-export default function Edit({details, fileId}) {
-    const {title, image, description, learnt, pri, link, github, tags} = details
-    const [form, setForm] = useState({title:`${title}`, description:`${description}`, learnt:`${learnt}`, link:`${link}`, github:`${github}`, pri:`${pri}`, tags:`${tags}`, image: `${image}`})
+export default function NewCert() {
+    const [form, setForm] = useState({title:"", description:'', link:'', image: 'Link is here'})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
+    const [im, setIm] = useState(false)
 
     useEffect(() => {
         if(isSubmitting){
@@ -30,8 +23,8 @@ export default function Edit({details, fileId}) {
     const createProject = async () => {
         console.log(form)
         try {
-            const res = await fetch(`${process.env.URL}/api/projects/${fileId}`, {
-                method: 'PUT',
+            const res = await fetch(`${process.env.URL}/api/certificates`, {
+                method: 'POST',
                 headers:{
                     "Accept":"applocation/json",
                     "Content-Type": 'application/json'
@@ -57,11 +50,35 @@ export default function Edit({details, fileId}) {
         if(!form.title){err.title = "Title is required"}
         if(!form.description){err.description = "description is required"}
         if(!form.learnt){err.learnt = "learnt is required"}
-        if(!form.tags){err.tags = "tags is required"}
-        if(!form.pri){err.pri = "Priority num is required"}
-        if(!form.image){err.image = "img is required"}
+        if(!form.link){err.link = "Link is Req"}
         return err
     }
+
+    const uploadPhoto = async (e) => {
+        const file = e.target.files[0]
+    
+        const res = await fetch(`/api/projects/s3`)
+        const { url } = await res.json()
+        
+        const upload = await fetch(url, {
+          method: 'PUT',
+          headers: {
+            "Content-Type": "multipart/form-data"
+          },
+          body: file
+        })
+        if (upload.ok) {
+          console.log('Uploaded successfully!')
+        } else {
+          console.error('Upload failed.')
+        }
+
+        const imageUrl = url.split('?')[0]
+        setForm({...form, image: imageUrl})
+        setIm(true)
+
+    }
+
     
     function handleChange(e){
         setForm({
@@ -69,28 +86,26 @@ export default function Edit({details, fileId}) {
             [e.target.name]: e.target.value
         }) 
     }
+
     
     const Upload = () =>  {
         return(
             <>
-                <><div className='mb-2'><Image height={500} width={1000} className='mb-2' src={form.image} /></div></> 
+                { im ? <><div className='mb-2'><Image height={500} width={1000} className='mb-2' src={form.image} /></div></> : 
+                    ( 
+                    <>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Upload file</label>
+                        <input
+                            onChange={uploadPhoto}
+                            className="block w-full text-sm mb-2 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none "
+                            type="file"
+                            accept="image/png, image/jpeg"
+                            /> 
+                    </>
+                    )
+                }
             </>
         )
-    }
-
-    const dele = () => {
-        try {
-            const res = fetch(`${process.env.URL}/api/projects/${fileId}`, {
-                method: 'Delete',
-                headers:{
-                    "Accept":"applocation/json",
-                    "Content-Type": 'application/json'
-                }
-            })
-            router.push('/')
-        } catch (error) {
-            console.log(error)
-        }
     }
 
     return(
@@ -105,31 +120,18 @@ export default function Edit({details, fileId}) {
                         <Upload/>
                         <div className="mb-6">
                             <label className="block mb-2 text-sm font-medium text-gray-900 ">Title</label>
-                            <input onChange={handleChange} value={form.title} type="text" id="title" name='title' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                            <input onChange={handleChange} type="text" id="title" name='title' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                         </div>
                         <div className="mb-6">
                             <label className="block mb-2 text-sm font-medium text-gray-900 ">Description</label>
-                            <textarea onChange={handleChange} value={form.description} rows="10" name='description' type="text" id="description" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
-                        </div>
-                        <div className="mb-6">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 ">Learnt</label>
-                            <input onChange={handleChange} type="text" value={form.learnt} name='learnt' id="learnt" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                            <textarea onChange={handleChange} rows="10" name='description' type="text" id="description" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                         </div>
                         <div className="mb-6">
                             <label className="block mb-2 text-sm font-medium text-gray-900 ">Link</label>
-                            <input onChange={handleChange} type="text" value={form.link} name='link' id="link" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
-                        </div>
-                        <div className="mb-6">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 ">Github</label>
-                            <input onChange={handleChange} type="text" value={form.github} name='github' id="github" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
-                        </div>
-                      <div className="mb-6">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 ">Priority Number</label>
-                            <input onChange={handleChange} type="number" value={form.pri} name='pri' id="pri" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
+                            <input onChange={handleChange} type="text" name='link' id="link" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
                         </div>
 
                         <button type="submit" className="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Submit</button>
-                        <button onClick={dele} className="mt-5 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full ml-3 sm:w-auto px-5 py-2.5 text-center ">Delete</button>
                     </form>
                 </div>
             )

@@ -23,7 +23,7 @@ export default function Projects({projects}) {
               <div className="font-medium text-lg mb-3 text-justify">{pr.learnt}</div>
               <Link href={pr.link}><a className="bg-rose-400 mt-2 rounded-lg p-2 inline">View</a></Link>
               <Link href={pr.github}><a className="bg-rose-400 m-2 rounded-lg p-2 inline">View</a></Link>
-              <Link href={`/edit/${pr._id}`}><a className="bg-rose-400 m-2 rounded-lg p-2 inline">Edit</a></Link>
+              <Link href={`/edit/projects-update-${pr._id}`}><a className="bg-rose-400 m-2 rounded-lg p-2 inline">Edit</a></Link>
             </div>
           )
         })}

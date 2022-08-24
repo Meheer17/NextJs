@@ -31,7 +31,7 @@ export default function NewProject() {
                 },
                 body: JSON.stringify(form)
             })
-            router.push('/')
+            router.push('/projects')
         } catch (error) {
             console.log(error)
         }

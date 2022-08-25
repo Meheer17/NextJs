@@ -46,7 +46,6 @@ export default function NewCert() {
 
     function validate(){
         let err = {}
-
         if(!form.title){err.title = "Title is required"}
         if(!form.description){err.description = "description is required"}
         if(!form.learnt){err.learnt = "learnt is required"}

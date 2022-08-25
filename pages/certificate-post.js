@@ -4,7 +4,7 @@ import {useRouter} from 'next/router'
 import Image from 'next/image'
 
 export default function NewCert() {
-    const [form, setForm] = useState({title:"", description:'', link:'', image: 'Link is here'})
+    const [form, setForm] = useState({title:"", description:'', link:'', image: ''})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
@@ -13,6 +13,7 @@ export default function NewCert() {
     useEffect(() => {
         if(isSubmitting){
             if(Object.keys(errors).length == 0){
+                console.log(form)
                 createProject();
             } else {
                 setIsSubmitting(false)
@@ -31,7 +32,7 @@ export default function NewCert() {
                 },
                 body: JSON.stringify(form)
             })
-            router.push('/')
+            router.push('/certificates')
         } catch (error) {
             console.log(error)
         }
@@ -46,9 +47,10 @@ export default function NewCert() {
 
     function validate(){
         let err = {}
+
         if(!form.title){err.title = "Title is required"}
         if(!form.description){err.description = "description is required"}
-        if(!form.learnt){err.learnt = "learnt is required"}
+        if(!form.image){err.image = "image is required"}
         if(!form.link){err.link = "Link is Req"}
         return err
     }
@@ -138,6 +140,8 @@ export default function NewCert() {
         </>
     )
 }
+
+    
 
 function Loader() {
     return (

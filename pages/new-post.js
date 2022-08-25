@@ -15,6 +15,8 @@ export default function NewProject() {
             if(Object.keys(errors).length == 0){
                 createProject();
             } else {
+                console.log(form)
+
                 setIsSubmitting(false)
             }
         }
@@ -46,13 +48,6 @@ export default function NewProject() {
 
     function validate(){
         let err = {}
-
-        if(!form.title){err.title = "Title is required"}
-        if(!form.description){err.description = "description is required"}
-        if(!form.learnt){err.learnt = "learnt is required"}
-        if(!form.tags){err.tags = "tags is required"}
-        if(!form.pri){err.pri = "Priority num is required"}
-        if(!form.image){err.image = "img is required"}
         return err
     }
 
@@ -100,7 +95,7 @@ export default function NewProject() {
     const Upload = () =>  {
         return(
             <>
-                { im ? <><div className='mb-2'><Image height={500} width={1000} className='mb-2' src={form.image} /></div></> : 
+                { im ? <><div className='mb-2'><Image height={500} width={1000} className='mb-2' src={form.image} priority/></div></> : 
                     ( 
                     <>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Upload file</label>

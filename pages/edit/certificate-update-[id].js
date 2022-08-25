@@ -11,6 +11,7 @@ export async function getServerSideProps(ctx) {
 }
 
 export default function EditCert({details, fileId}) {
+    const {title, description, link, image} = details
     const [form, setForm] = useState({title:`${title}`, description:`${description}`, link:`${link}`, image: `${image}`})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
@@ -30,7 +31,7 @@ export default function EditCert({details, fileId}) {
     const createProject = async () => {
         console.log(form)
         try {
-            const res = await fetch(`${process.env.URL}/api/certificates`, {
+            const res = await fetch(`${process.env.URL}/api/certificates/${fileId}`, {
                 method: 'POST',
                 headers:{
                     "Accept":"applocation/json",

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import Script from 'next/script'
+import Image from 'next/image'
 
 export default function Certificates({projects}){
   return (

@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch';
 
-export default function Index({ notes }) {
+export default function Index() {
   return(
     <>
       <Head>

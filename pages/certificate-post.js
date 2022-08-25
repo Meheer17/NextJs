@@ -24,7 +24,7 @@ export default function NewCert() {
     const createProject = async () => {
         console.log(form)
         try {
-            const res = await fetch(`${process.env.URL}/api/certificates`, {
+            const res = await fetch(`${process.env.URL}api/certificates`, {
                 method: 'POST',
                 headers:{
                     "Accept":"applocation/json",

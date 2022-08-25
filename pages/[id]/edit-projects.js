@@ -12,7 +12,7 @@ export async function getServerSideProps(ctx) {
 
 export default function Edit({details, fileId}) {
     const {title, image, description, learnt, pri, link, github, tags} = details
-    const [form, setForm] = useState({title:`${title}`, description:`${description}`, learnt:`${learnt}`, link:`${link}`, github:`${github}`, pri:`${pri}`, tags:`${tags}`, image: `${image}`})
+    const [form, setForm] = useState({title: title , description: description, learnt: learnt, link: link, github:github, pri: pri, tags: tags, image: image})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
@@ -30,7 +30,7 @@ export default function Edit({details, fileId}) {
     const createProject = async () => {
         console.log(form)
         try {
-            const res = await fetch(`${process.env.URL}/api/projects/${fileId}`, {
+            const res = await fetch(`${process.env.URL}api/projects/${fileId}`, {
                 method: 'PUT',
                 headers:{
                     "Accept":"applocation/json",
@@ -80,14 +80,14 @@ export default function Edit({details, fileId}) {
 
     const dele = () => {
         try {
-            const res = fetch(`${process.env.URL}/api/projects/${fileId}`, {
+            const res = fetch(`${process.env.URL}api/projects/${fileId}`, {
                 method: 'Delete',
                 headers:{
                     "Accept":"applocation/json",
                     "Content-Type": 'application/json'
                 }
             })
-            router.push('/')
+            router.push('/projects')
         } catch (error) {
             console.log(error)
         }
@@ -98,7 +98,7 @@ export default function Edit({details, fileId}) {
             <h1 className="text-center text-2xl text-gray-800 font-serif">Create A New Project Detail</h1>
             
            {
-            isSubmitting ? <div className="mx-auto text-center w-10 h-10 pt-10 "><Loader/></div> : (
+            isSubmitting ? <div className="mx-auto text-center w-10 h-10 pt-10"><Loader/></div> : (
 
                 <div className="p-10 drop-shadow-xl ">
                     <form className="mx-auto max-w-5xl p-5 border-2 border-slate-900 rounded-md" onSubmit={handleSubmit}>

@@ -5,18 +5,17 @@ import Image from 'next/image'
 
 export async function getServerSideProps(ctx) {
     const id = ctx.params.id
-    const res = await fetch(`${process.env.URL}/api/projects/${id}`);
+    const res = await fetch(`${process.env.URL}/api/certificates/${id}`);
     const { data } = await res.json();
     return { props: {details: data, fileId: id}}
 }
 
 export default function EditCert({details, fileId}) {
     const {title, description, link, image} = details
-    const [form, setForm] = useState({title:`${title}`, description:`${description}`, link:`${link}`, image: `${image}`})
+    const [form, setForm] = useState({title: title, description: description, link: link, image: image})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
-    const [im, setIm] = useState(false)
 
     useEffect(() => {
         if(isSubmitting){
@@ -32,14 +31,14 @@ export default function EditCert({details, fileId}) {
         console.log(form)
         try {
             const res = await fetch(`${process.env.URL}/api/certificates/${fileId}`, {
-                method: 'POST',
+                method: 'PUT',
                 headers:{
                     "Accept":"applocation/json",
                     "Content-Type": 'application/json'
                 },
                 body: JSON.stringify(form)
             })
-            router.push('/')
+            router.push('/certificates')
         } catch (error) {
             console.log(error)
         }
@@ -57,7 +56,7 @@ export default function EditCert({details, fileId}) {
 
         if(!form.title){err.title = "Title is required"}
         if(!form.description){err.description = "description is required"}
-        if(!form.learnt){err.learnt = "learnt is required"}
+        if(!form.image){err.image = "image is required"}
         if(!form.link){err.link = "Link is Req"}
         return err
     }

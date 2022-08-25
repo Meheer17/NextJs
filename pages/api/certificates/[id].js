@@ -10,13 +10,13 @@ export default async (req, res) => {
 
     case 'GET':
       try {
-        const Certificate = await Certificate.findById(id)
+        const certificate = await Certificate.findById(id)
 
-        if(!Certificate){
-          return res.status(400).json({success: false})
+        if(!certificate) {
+          return res.status(400).json({success: query})
         }
 
-        res.status(200).json({success: true, data: Certificate})
+        res.status(200).json({success: true, data: certificate})
 
       } catch (error) {
         res.status(400).json({success: false})
@@ -25,13 +25,13 @@ export default async (req, res) => {
     
     case "PUT":
       try {
-        const Certificate = await Certificate.findByIdAndUpdate(id, {title: req.body.title, description: req.body.description, image: req.body.image, link: req.body.link}, {new:true , runValidators: true})
+        const certificate = await Certificate.findByIdAndUpdate(id, {title: req.body.title, description: req.body.description, image: req.body.image, link: req.body.link}, {new:true , runValidators: true})
 
-        if(!Certificate){
+        if(!certificate){
           return res.status(400).json({success: false})
         }
 
-        res.status(200).json({success: true, data: Certificate})
+        res.status(200).json({success: true, data: certificate})
 
       } catch (error) {
         res.status(400).json({success: false})

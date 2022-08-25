@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Head from 'next/head'
-import Script from 'next/script'
 import Image from 'next/image'
 
 export default function Certificates({projects}){
@@ -18,9 +17,9 @@ export default function Certificates({projects}){
             <div key={pr._id} className="bg-slate-500 m-2 p-3 rounded-sm w-full">
               <div><Image src={pr.image} height={500} width={1000} priority/></div>
               <h1 className="italic font-extrabold capitalize text-2xl text-center underline-offset-0 underline">{pr.title}</h1>
-              <div className="font-medium text-justify text-lg">{pr.description}</div>
+              <div className="font-medium text-justify text-lg mb-5">{pr.description}</div>
               <Link href={pr.link}><a className="bg-rose-400 mt-2 rounded-lg p-2 inline">View</a></Link>
-              <Link href={`/edit/certificate-update-${pr._id}`}><a className="bg-rose-400 m-2 rounded-lg p-2 inline">Edit</a></Link>
+              <Link href={`/${pr._id}/edit-certificate`}><a className="bg-rose-400 m-2 rounded-lg p-2 inline">Edit</a></Link>
             </div>
           )
         })}

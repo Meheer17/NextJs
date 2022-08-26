@@ -1,4 +1,12 @@
 module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://next-js-opal-xi.vercel.app/:path*'
+      }
+    ]
+  },
   env: {
       URI: "mongodb+srv://MAHI:1705@mo.jslvt.mongodb.net/Nextjs?retryWrites=true&w=majority",
       URL:"https://next-js-opal-xi.vercel.app/",
@@ -9,13 +17,5 @@ module.exports = {
   },
   images: {
     domains: ['website-bucket-meheer.s3.ap-south-1.amazonaws.com'],
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'http://localhost:4000/:path*'
-      }
-    ]
   }
 }

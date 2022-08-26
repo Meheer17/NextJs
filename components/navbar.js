@@ -14,9 +14,9 @@ export default function Navbar() {
 
       <div className='mobile-menu'>
         <ul>
-          <li><Link href="/"><a className="block text-sm px-2 py-4 transition duration-300 hover:bg-blue-500"> Home</a></Link></li>
-          <li><Link href="/projects"><a className="block text-sm px-2 py-4 transition duration-300 hover:bg-blue-500"> Projects</a></Link></li>
-          <li><Link href="/certificates"><a className="block text-sm px-2 py-4 transition duration-300 hover:bg-blue-500"> Certificates</a></Link></li>
+          <li><button onClick={mob}><Link href="/"><a className="block text-sm px-2 py-4 transition duration-300 hover:bg-blue-500"> Home</a></Link></button></li>
+          <li><button onClick={mob}><Link href="/projects"><a className="block text-sm px-2 py-4 transition duration-300 hover:bg-blue-500"> Projects</a></Link></button></li>
+          <li><button onClick={mob}><Link href="/certificates"><a className="block text-sm px-2 py-4 transition duration-300 hover:bg-blue-500"> Certificates</a></Link></button></li>
         </ul>
       </div>
       

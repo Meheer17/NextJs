@@ -9,5 +9,13 @@ module.exports = {
   },
   images: {
     domains: ['website-bucket-meheer.s3.ap-south-1.amazonaws.com'],
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:4000/:path*'
+      }
+    ]
   }
 }

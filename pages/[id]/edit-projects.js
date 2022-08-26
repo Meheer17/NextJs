@@ -28,7 +28,6 @@ export default function Edit({details, fileId}) {
     }, [errors])
 
     const createProject = async () => {
-        console.log(form)
         try {
             const res = await fetch(`${process.env.URL}api/projects/${fileId}`, {
                 method: 'PUT',

@@ -20,7 +20,9 @@ const allowCors = fn => async (req, res) => {
   return await fn(req, res)
 }
 
-export default async function handler(req, res){
+
+
+async function handler(req, res){
   const {method} = req;
 
   switch (method) {
@@ -50,3 +52,5 @@ export default async function handler(req, res){
       break;
   }
 }
+
+module.exports = allowCors(handler)

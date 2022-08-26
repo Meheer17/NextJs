@@ -37,7 +37,7 @@ export default function Edit({details, fileId}) {
                 },
                 body: JSON.stringify(form)
             })
-            router.push('/projets')
+            router.push('/projects')
         } catch (error) {
             console.log(error)
         }

@@ -1,5 +1,3 @@
-
-
 import aws from 'aws-sdk'
 
 const region = "ap-south-1"

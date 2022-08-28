@@ -6,7 +6,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 export default function Projects() {
   const data = useSWR('/api/projects', fetcher).data
-  if(!data) return <div><h1 className="text-sky-600 mb-5 text-2xl text-center">Projects</h1></div>
+  if(!data) return <div><h1 className="text-sky-600 mb-5 text-2xl text-center">Loading The Projects...</h1></div>
   const projects = data.data
 
   return (

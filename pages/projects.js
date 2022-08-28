@@ -1,16 +1,21 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import useSWR from 'swr'
+const fetcher = (...args) => fetch(...args).then(res => res.json())
 
+export default function Projects() {
+  const data = useSWR('/api/projects', fetcher).data
+  if(!data) return <div><h1 className="text-sky-600 mb-5 text-2xl text-center">Projects</h1></div>
+  const projects = data.data
 
-export default function Projects({projects}) {
   return (
     <>
       <Head>
         <title>Projects</title>
       </Head>
       
-      <h1 className="text-sky-600 text-2xl text-center">Projects</h1>
+      <h1 className="text-sky-600 mb-5 text-2xl text-center">Projects</h1>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 place-content-evenly'>
 
       {projects.map(pr => {
@@ -28,15 +33,8 @@ export default function Projects({projects}) {
           )
         })}
 
-      </div>
-    </>
-  )
+       </div>
+     </>
+   )
 
-}
-
-export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await fetch(`${process.env.URL}/api/projects`);
-  const { data } = await res.json();
-  return { props: {projects: data }}
 }

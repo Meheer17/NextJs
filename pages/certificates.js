@@ -1,18 +1,24 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import Image from 'next/image'
+import useSWR from 'swr'
+const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-export default function Certificates({projects}){
+export default function Certificates(){
+  const data = useSWR('/api/certificates', fetcher).data
+
+  if(!data) return <div><h1 className="text-sky-600 mb-5 text-2xl text-center">Certificates</h1></div>
+
   return (
     <>
       <Head>
         <title>Certificates</title>
       </Head>
       
-      <h1 className="text-sky-600 text-2xl text-center">Certificates</h1>
+      <h1 className="text-sky-600 mb-5 text-2xl text-center">Certificates</h1>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 place-content-evenly'>
 
-      {projects.map(pr => {
+      {data.data.map(pr => {
           return (
             <div key={pr._id} className="bg-slate-500 m-2 p-3 rounded-sm w-full">
               <div><Image src={pr.image} height={500} width={1000} priority/></div>
@@ -27,11 +33,4 @@ export default function Certificates({projects}){
       </div>
     </>
   )
-}
-
-export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await fetch(`${process.env.URL}/api/certificates`);
-  const { data } = await res.json();
-  return { props: {projects: data }}
 }

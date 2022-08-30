@@ -14,9 +14,9 @@ export default function Navbar() {
 
       <div className='mobile-menu'>
         <ul>
-          <li><button onClick={mob}><Link href="/"><a className="block text-sm px-2 py-4 transition duration-300 hover:bg-blue-500"> Home</a></Link></button></li>
-          <li><button onClick={mob}><Link href="/projects"><a className="block text-sm px-2 py-4 transition duration-300 hover:bg-blue-500"> Projects</a></Link></button></li>
-          <li><button onClick={mob}><Link href="/certificates"><a className="block text-sm px-2 py-4 transition duration-300 hover:bg-blue-500"> Certificates</a></Link></button></li>
+          <li><Link href="/"><a onClick={mob} className="block text-center text-smr px-2 py-4 transition duration-300 hover:bg-blue-500"> Home</a></Link></li>
+          <li><Link href="/projects"><a onClick={mob} className="block text-center text-smr px-2 py-4 transition duration-300 hover:bg-blue-500"> Projects</a></Link></li>
+          <li><Link href="/certificates"><a onClick={mob} className="block text-center text-smr px-2 py-4 transition duration-300 hover:bg-blue-500"> Certificates</a></Link></li>
         </ul>
       </div>
       
@@ -31,22 +31,10 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="bg-slate-900 text-slate-400 shadow-xl border-b-2 border-gray-700">
+      <nav className="bg-slate-900 text-slate-400 p-3 shadow-xl border-b-2 border-gray-700">
         <div className="cont mx-auto px-4">
 
           <div className="flex justify-between">
-
-            <div className="flex space-x-1">
-              <div className="flex items-center py-4 px-2">
-                <Link href='/'>
-                  <a>
-                    <img src='/icon.jpg' className="h-10 mr-2 rounded" />
-                  </a>
-                </Link>
-
-              </div>
-            </div>
-
             <div className="items-center flex">
               <span className="text-2xl font-bold italic font-serif">Meheer</span>
             </div>

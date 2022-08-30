@@ -6,6 +6,8 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 export default function Certificates(){
   const data = useSWR('/api/certificates', fetcher).data
+  const speed = useSWR('/api/projects', fetcher)
+
   if(!data) return <div><h1 className="text-sky-600 mb-5 text-2xl text-center">Loading The Certificates...</h1></div>
   const projects = data.data
 

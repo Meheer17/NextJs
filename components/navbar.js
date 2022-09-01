@@ -14,9 +14,9 @@ export default function Navbar() {
 
       <div className='mobile-menu'>
         <ul>
-          <li><Link href="/"><a onClick={mob} className="block text-center text-smr px-2 py-4 transition duration-300 hover:bg-blue-500"> Home</a></Link></li>
-          <li><Link href="/projects"><a onClick={mob} className="block text-center text-smr px-2 py-4 transition duration-300 hover:bg-blue-500"> Projects</a></Link></li>
-          <li><Link href="/certificates"><a onClick={mob} className="block text-center text-smr px-2 py-4 transition duration-300 hover:bg-blue-500"> Certificates</a></Link></li>
+          <li><Link href="/"><a onClick={mob} className="block text-center text-smr px-2 py-4 transition duration-1000 hover:bg-blue-500"> Home</a></Link></li>
+          <li><Link href="/projects"><a onClick={mob} className="block text-center text-smr px-2 py-4 transition duration-1000 hover:bg-blue-500"> Projects</a></Link></li>
+          <li><Link href="/certificates"><a onClick={mob} className="block text-center text-smr px-2 py-4 transition duration-1000 hover:bg-blue-500"> Certificates</a></Link></li>
         </ul>
       </div>
       
@@ -31,7 +31,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="bg-slate-900 text-slate-400 p-3 shadow-xl border-b-2 border-gray-700">
+      <nav className="text-slate-400 p-3 shadow-xl border-b-2 border-gray-700" style={{backgroundImage:"linear-gradient(90deg, rgba(24,24,35,1) 38%, rgba(0,0,0,1) 38%)"}}>
         <div className="cont mx-auto px-4">
 
           <div className="flex justify-between">

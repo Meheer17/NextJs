@@ -12,7 +12,7 @@ export default function Certificates(){
   const projects = data.data
 
   return (
-    <>
+    <div className='p-10'>
       <Head>
         <title>Certificates</title>
       </Head>
@@ -33,6 +33,6 @@ export default function Certificates(){
         })}
 
       </div>
-    </>
+    </div>
   )
 }

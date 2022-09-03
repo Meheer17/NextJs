@@ -1,6 +1,10 @@
 import Head from 'next/head'
 import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch';
+import S1 from '../indexPageContent/section1'
+import S2 from '../indexPageContent/section2'
+
+
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 
@@ -13,8 +17,9 @@ export default function Index() {
       <Head>
         <title>Home</title>
       </Head>
-      
-      <h1 className="text-sky-600 text-2xl text-center">Home</h1>
+
+      <S1/>
+      <S2/>
     </>
   )
 }  

@@ -11,7 +11,7 @@ export default function Projects() {
   const projects = data.data
 
   return (
-    <>
+    <div className='p-10'>
       <Head>
         <title>Projects</title>
       </Head>
@@ -35,6 +35,6 @@ export default function Projects() {
         })}
 
        </div>
-     </>
+     </div>
    )
 }

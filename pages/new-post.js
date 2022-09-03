@@ -98,7 +98,7 @@ export default function NewProject() {
                 { im ? <><div className='mb-2'><Image height={500} width={1000} className='mb-2' src={form.image} priority/></div></> : 
                     ( 
                     <>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Upload file</label>
+                        <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-gray-300">Upload file</label>
                         <input
                             onChange={uploadPhoto}
                             className="block w-full text-sm mb-2 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none "
@@ -113,41 +113,41 @@ export default function NewProject() {
     }
 
     return(
-        <> 
-            <h1 className="text-center text-2xl text-gray-800 font-serif">Create A New Project Detail</h1>
+        <div className='p-10'> 
+            <h1 className="text-center text-2xl text-gray-100 font-serif">Create A New Project Detail</h1>
             
            {
             isSubmitting ? <div className="mx-auto text-center w-10 h-10 pt-10 "><Loader/></div> : (
 
                 <div className="p-10 drop-shadow-xl ">
-                    <form className="mx-auto max-w-5xl p-5 border-2 border-slate-900 rounded-md" onSubmit={handleSubmit}>
+                    <form className="mx-auto max-w-5xl text-lg bg-zinc-300 p-5 border-2 border-slate-900 rounded-md" onSubmit={handleSubmit}>
                         <Upload/>
                         <div className="mb-6">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 ">Title</label>
+                            <label className="block mb-2 font-medium text-gray-900 ">Title</label>
                             <input onChange={handleChange} value={form.title} type="text" id="title" name='title' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                         </div>
                         <div className="mb-6">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 ">Description</label>
+                            <label className="block mb-2 font-medium text-gray-900 ">Description</label>
                             <textarea onChange={handleChange} value={form.description} rows="10" name='description' type="text" id="description" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                         </div>
                         <div className="mb-6">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 ">Learnt</label>
+                            <label className="block mb-2 font-medium text-gray-900 ">Learnt</label>
                             <input onChange={handleChange} type="text" value={form.learnt} name='learnt' id="learnt" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                         </div>
                         <div className="mb-6">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 ">Link</label>
+                            <label className="block mb-2 font-medium text-gray-900 ">Link</label>
                             <input onChange={handleChange} type="text" value={form.link} name='link' id="link" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
                         </div>
                         <div className="mb-6">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 ">Github</label>
+                            <label className="block mb-2 font-medium text-gray-900 ">Github</label>
                             <input onChange={handleChange} type="text" value={form.github} name='github' id="github" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
                         </div>
                       <div className="mb-6">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 ">Priority Number</label>
+                            <label className="block mb-2  font-medium text-gray-900 ">Priority Number</label>
                             <input onChange={handleChange} type="number" value={form.pri} name='pri' id="pri" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
                         </div>
                         <div className="mb-6">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 ">Tags</label>
+                            <label className="block mb-2 font-medium text-gray-900 ">Tags</label>
                             <input onChange={handleTags} type="text" name='tags' id="tags" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  /> 
                         </div>
 
@@ -156,7 +156,7 @@ export default function NewProject() {
                 </div>
             )
            }
-        </>
+        </div>
     )
 }
 

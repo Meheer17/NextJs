@@ -3,6 +3,7 @@ import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch';
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect } from 'react';
 
 // import your icons
 import { faBookOpenReader } from '@fortawesome/free-solid-svg-icons';
@@ -78,27 +79,55 @@ function Projects() {
   return (
     <>
       <div className='grid md:grid-cols-2 gap-5 grid-cols-1 p-16'>
-        <div className='grid grid-rows-2 text-slate-500'>
+        <div className='grid grid-rows-1'>
+          
           <div>
-            <h1>MY PROJECTS</h1>
-            <h1 className='text-6xl text-white'>Work I've done over the past 2 years!</h1>
+            <h1 className='text-slate-500'>MY PROJECTS</h1>
+            <h1 className='text-6xl text-white mb-4'>Work I've done over the past 2 years!</h1>
           </div>
+
           <div>
-            <div></div>
-            {projects.map(pr => {
-                return (
-                  <div key={pr._id} className="bg-slate-500 m-2 p-3 rounded-sm w-full">
-                    <div><Image src={pr.image} height={500} width={1000} priority/></div>
-                    <h1 className="italic font-extrabold capitalize text-2xl text-center underline-offset-0 underline">{pr.title}</h1>
-                    <div className="font-medium text-justify text-lg">{pr.description}</div>
-                  </div>
-                )
-              })
-            }
+            <div key={projects[0]._id} className="bg-slate-500 p-3 rounded-sm w-full">
+              <div><Image src={projects[0].image} height={500} width={1000} priority/></div>
+              <h1 className="italic font-extrabold capitalize text-white text-2xl text-center underline-offset-0 underline">{projects[0].title}</h1>
+              <div className="font-medium text-justify text-lg">{projects[0].description}</div>
+            </div>
           </div>
+
+          <div className='mt-4'>
+            <div key={projects[1]._id} className="bg-slate-500 p-3 rounded-sm w-full">
+              <div><Image src={projects[1].image} height={500} width={1000} priority/></div>
+              <h1 className="italic font-extrabold capitalize text-white text-2xl text-center underline-offset-0 underline">{projects[1].title}</h1>
+              <div className="font-medium text-justify text-lg">{projects[1].description}</div>
+            </div>
+          </div>
+        
         </div>
+        
         <div className='grid grid-cols-1'>
-        </div>
+
+          <div>
+            <div key={projects[2]._id} className="bg-slate-500 p-3 rounded-sm w-full">
+                <div><Image src={projects[2].image} height={500} width={1000} priority/></div>
+                <h1 className="italic font-extrabold capitalize text-2xl text-white text-center underline-offset-0 underline">{projects[2].title}</h1>
+                <div className="font-medium text-justify text-lg">{projects[2].description}</div>
+              </div>
+            </div>
+
+            <div className='mt-4'>
+              <div key={projects[4]._id} className="bg-slate-500 p-3 rounded-sm w-full">
+                <div><Image src={projects[4].image} height={500} width={1000} priority/></div>
+                <h1 className="italic font-extrabold capitalize text-2xl text-white text-center underline-offset-0 underline">{projects[4].title}</h1>
+                <div className="font-medium text-justify text-lg">{projects[4].description}</div>
+              </div>
+            </div>
+
+            <div className='flex justify-center'>
+              <h1 className='text-white'><Link href={'/projects'}><a className='text-2xl text-white p-3 border-2 duration-500  border-sky-300 hover:bg-sky-400 hover:text-gray-900 rounded'>VIEW ALL PROJECTS</a></Link></h1>
+            </div>
+
+          </div>
+
       </div>
     </>
   )

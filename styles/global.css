@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 .boxo {
-    height: 70vh;
-    width: 110%;
+    height: 50vh;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .boxo {
+        height: 70vh;
+        width: 110%;
+    }
 }

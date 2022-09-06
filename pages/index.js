@@ -15,8 +15,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 
 export default function Index() {
-  const data = useSWR('/api/certificates', fetcher) // This line behaves and helps the data to behave like a pre-loaded page.
-  const speed = useSWR('/api/projects', fetcher) // And this also helps the data for the projects and certificate load even faster than before! 
+  const data = useSWR('/api/certificates', fetcher)
   // const name = process.env.OWNER
 
   return(
@@ -140,7 +139,7 @@ function Projects() {
           </div>
 
             <div className='flex justify-center'>
-              <h1 className='text-white'><Link href={'/projects'}><a className='text-2xl text-white p-3 border-2 duration-500  border-sky-300 hover:bg-sky-400 hover:text-gray-900 rounded'>VIEW ALL PROJECTS</a></Link></h1>
+              <h1 className='text-white'><Link href={'/projects'}><a className='md:text-2xl text-xl text-white p-3 border-2 duration-500  border-sky-300 hover:bg-sky-400 hover:text-gray-900 rounded'>VIEW ALL PROJECTS</a></Link></h1>
             </div>
 
           </div>

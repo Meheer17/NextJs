@@ -8,7 +8,7 @@ export default function Projects() {
   const data = useSWR('/api/projects', fetcher).data  
   const speed = useSWR('/api/certificates', fetcher)
   if(!data) return <div><h1 className="text-sky-600 mb-5 text-2xl text-center">Loading The Projects...</h1></div>
-  const projects = data.data
+  const projects = data.data.reverse()
 
   return (
     <div className='p-10'>

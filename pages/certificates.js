@@ -3,6 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import useSWR from 'swr'
 const fetcher = (...args) => fetch(...args).then(res => res.json())
+import { faPenToSquare, faLink } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Certificates(){
   const data = useSWR('/api/certificates', fetcher).data
@@ -21,13 +23,23 @@ export default function Certificates(){
 
       {projects.map(pr => {
           return (
-            <div key={pr._id} className="bg-slate-500 m-2 p-3 rounded-sm w-full">
-              <div><Image src={pr.image} height={500} width={1000} priority/></div>
-              <h1 className="italic font-extrabold capitalize text-2xl text-center underline-offset-0 underline">{pr.title}</h1>
-              <div className="font-medium text-justify text-lg mb-5">{pr.description}</div>
-              <Link href={pr.link}><a className="bg-rose-400 mt-2 rounded-lg p-2 inline">View</a></Link>
-              <Link href={`/${pr._id}/edit-certificate`}><a className="bg-rose-400 m-2 rounded-lg p-2 inline">Edit</a></Link>
+            <div key={pr._id} className="bg-gray-900 rounded-sm w-full">
+              <Image src={pr.image} height={500} width={1000} priority/>
+              <div className='flex flex-col'>
+              <div className='p-3 pb-4'>
+                <h1 className="font-extrabold text-white text-2xl text-left">{pr.title}</h1>
+                <div className="font-medium text-slate-500 text-justify text-lg">{pr.description}</div>
+              </div>
+              <div className='grow-1'></div>
+              <div className='p-3 pb-4 justify-between flex bottom-0'>
+                <Link href={pr.link}><a target={"_blank"} className="bg-black text-white m-2 rounded-lg p-4"><FontAwesomeIcon className='mr-2 text-white' icon={faLink} />View</a></Link>
+                <Link href={`/${pr._id}/edit-certificate`}><a className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faPenToSquare} />Edit</a></Link>
+              </div>
             </div>
+            </div>
+            
+            
+           
           )
         })}
 

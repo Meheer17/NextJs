@@ -3,7 +3,6 @@ import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch';
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect } from 'react';
 
 // import your icons
 import { faBookOpenReader } from '@fortawesome/free-solid-svg-icons';
@@ -78,7 +77,7 @@ function Projects() {
 
   return (
     <>
-      <div className='grid md:grid-cols-2 gap-5 grid-cols-1 p-16 pb-24'>
+      <div className='grid md:grid-cols-2 gap-5 grid-cols-1 md:p-16 p-5 pb-24'>
         <div className='grid grid-rows-1'>
           
           <div>
@@ -139,7 +138,7 @@ function Projects() {
           </div>
 
             <div className='flex justify-center'>
-              <h1 className='text-white'><Link href={'/projects'}><a className='md:text-2xl text-xl text-white p-3 border-2 duration-500  border-sky-300 hover:bg-sky-400 hover:text-gray-900 rounded'>VIEW ALL PROJECTS</a></Link></h1>
+              <h1 className='text-white'><Link href={'/projects'}><a className='md:text-2xl text-sm text-white p-3 border-2 duration-500  border-sky-300 hover:bg-sky-400 hover:text-gray-900 rounded'>VIEW ALL PROJECTS</a></Link></h1>
             </div>
 
           </div>
@@ -151,7 +150,7 @@ function Projects() {
 
 function Skills() {
   return (
-    <div className='grid py-24 p-16 gap-10 md:grid-cols-3 grid-cols-1' style={{backgroundColor: "rgba(0,0,0,1)"}}>
+    <div className='grid py-24 md:p-16 p-5 gap-10 md:grid-cols-3 grid-cols-1' style={{backgroundColor: "rgba(0,0,0,1)"}}>
           <div className='text-white text-6xl'>
             Skillset
             <p className='pt-5 text-xl text-slate-400 '>With skills in over many methods of creating a website, I am the perfect person to hire when it comes to a full fledged project. Whatever your needs are, I can pretty much take on any challenge.</p>

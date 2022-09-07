@@ -67,34 +67,26 @@ export default function EditCert({details, fileId}) {
         }) 
     }
 
-    const Upload = () =>  {
-        return(
-            <>
-                <><div className='mb-2'><Image height={500} width={1000} className='mb-2' src={form.image} /></div></> 
-            </>
-        )
-    }
-
     return(
         <> 
-            <h1 className="text-center text-2xl text-gray-800 font-serif">Create A New Project Detail</h1>
+            <h1 className="text-center text-2xl text-gray-300 font-serif">Update Certificate Data {form.title}</h1>
             
            {
             isSubmitting ? <div className="mx-auto text-center w-10 h-10 pt-10 "><Loader/></div> : (
 
                 <div className="p-10 drop-shadow-xl ">
-                    <form className="mx-auto max-w-5xl p-5 border-2 border-slate-900 rounded-md" onSubmit={handleSubmit}>
-                        <Upload/>
-                        <div className="mb-6">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 ">Title</label>
+                    <form className="mx-auto max-w-5xl bg-slate-300 p-5 border-2 border-slate-900 rounded-md" onSubmit={handleSubmit}>
+                        <Image height={500} width={1000} className='mb-2' src={form.image} />
+                        <div className="mb-6 mt-3">
+                            <label className="block mb-2 text-xl font-medium text-gray-900 ">Title</label>
                             <input onChange={handleChange} value={form.title} type="text" id="title" name='title' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                         </div>
                         <div className="mb-6">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 ">Description</label>
+                            <label className="block mb-2 text-xl font-medium text-gray-900 ">Description</label>
                             <textarea onChange={handleChange} value={form.description} rows="10" name='description' type="text" id="description" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                         </div>
                         <div className="mb-6">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 ">Link</label>
+                            <label className="block mb-2 text-xl font-medium text-gray-900 ">Link</label>
                             <input onChange={handleChange} value={form.link} type="text" name='link' id="link" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
                         </div>
 

@@ -111,7 +111,7 @@ export default function NewCert() {
 
     return(
         <div className='p-10'> 
-            <h1 className="text-center text-2xl text-gray-100 font-serif">Create A New Certificate Detail</h1>
+            <h1 className="text-center text-2xl text-gray-100 font-serif md:mt-16 mt-14">Create A New Certificate Detail</h1>
             
            {
             isSubmitting ? <div className="mx-auto text-center w-10 h-10 pt-10 "><Loader/></div> : (

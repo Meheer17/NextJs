@@ -31,7 +31,10 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="text-slate-400 p-3 shadow-xl border-b-2 border-gray-700" style={{backgroundImage:"linear-gradient(90deg, rgba(24,24,35,1) 38%, rgba(0,0,0,1) 38%)"}}>
+      <div className='relative'>
+
+
+      <nav className="fixed w-full z-50 text-slate-400 p-3 shadow-xl border-b-2 border-gray-700" style={{backgroundImage:"linear-gradient(90deg, rgba(24,24,35,1) 38%, rgba(0,0,0,1) 38%)"}}>
         <div className="cont mx-auto px-4">
 
           <div className="flex justify-between">
@@ -57,6 +60,7 @@ export default function Navbar() {
         </div>
         {mobile ? <MenuMob /> : null}
       </nav>
+      </div>
     </>
 
   )

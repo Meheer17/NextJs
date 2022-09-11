@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Projects() {
   const data = useSWR('/api/projects', fetcher).data  
   const speed = useSWR('/api/certificates', fetcher)
-  if(!data) return <div><h1 className="text-sky-600 mb-5 text-2xl text-center">Loading The Projects...</h1></div>
+  if(!data) return <div><h1 className="text-sky-600 pt-24 mb-5 text-2xl text-center">Loading The Projects...</h1></div>
   const projects = data.data.reverse()
   
 
@@ -22,7 +22,7 @@ export default function Projects() {
         <title>Projects</title>
       </Head>
       
-      <h1 className="text-sky-600 mb-5 text-2xl text-center">Projects</h1>
+      <h1 className="text-sky-600 mb-5 text-2xl text-center md:mt-16 mt-14">Projects</h1>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 place-content-evenly'>
 
       
@@ -39,7 +39,7 @@ export default function Projects() {
                 </div>
                 <div className='grow-1'></div>
                 <div className='p-3 pb-4 justify-between flex bottom-0'>
-                  <Link href={pr.link}><a target={"_blank"} className="bg-black text-white m-2 rounded-lg p-4"><FontAwesomeIcon className='mr-2 text-white' icon={faLink} />View</a></Link>
+                  {pr.link ? <Link href={pr.link}><a target={"_blank"} className="bg-black text-white m-2 rounded-lg p-4"><FontAwesomeIcon className='mr-2 text-white' icon={faLink} />View</a></Link> : null}
                   <Link href={`/${pr._id}/edit-projects`}><a className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faPenToSquare} />Edit</a></Link>
                   {pr.github ? <Link href={pr.github}><a target={"_blank"} className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faGithub} />GitHub</a></Link> : null}
                 </div>

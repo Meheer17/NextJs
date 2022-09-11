@@ -59,7 +59,7 @@ function AbtMe() {
             <p className='text-xl mt-3 text-gray-500'>Hardwork, Determination and persistance, These are the values I follow and believe. The reason im here is because of these values ive been following all this long and got my way thru...</p>
           </div>
           <div className='mt-16'>
-            <Link href={'/aboutme'}><a className="underline hover:no-underline hover:border-double hover:border-4 underline-offset-8 hover:bg-violet-500 p-3 rounded">About Me</a></Link>
+            <Link href={'/aboutme'}><a className="underline hover:no-underline underline-offset-8 hover:bg-sky-500 p-3 rounded">About Me</a></Link>
           </div>
         </div>
           <Image src={"/new.jpg"} height={1080} width={1920}/>
@@ -137,7 +137,7 @@ function Projects() {
             </a></Link>
           </div>
 
-            <div className='flex justify-center'>
+            <div className='flex justify-center '>
               <h1 className='text-white'><Link href={'/projects'}><a className='md:text-2xl text-sm text-white p-3 border-2 duration-500  border-sky-300 hover:bg-sky-400 hover:text-gray-900 rounded'>VIEW ALL PROJECTS</a></Link></h1>
             </div>
 
@@ -164,7 +164,7 @@ function Skills() {
               </div>
               <p className='text-2xl'>Web Developemnt</p>
               <div className='text-slate-500'>
-                Working with multiple websites and projects has given me an extensive knowledge on how to create websites.
+                Working with multiple websites and projects has given me an extensive knowledge on how to create websites using the basics i've learnt over the years.
               </div>
             </div>
             <div className='hover:scale-110'>
@@ -173,7 +173,7 @@ function Skills() {
               </div>
               <p className='text-2xl'>BackEnd Developemnt</p>
               <div className='text-slate-500'>
-                A really good idea and a clear understanding of how to create a smooth flawless codes running with the least latency possible.
+                A really good idea and a clear understanding of how to create a smooth flawless code running with the lowest latency possible, what more would you want?.
               </div>
             </div>
             
@@ -186,7 +186,7 @@ function Skills() {
               </div>
               <p className='text-2xl'>Api Development</p>
               <div className='text-slate-500'>
-                Started creating APIs with simple and easy types, later grew to fun filled hard and challenging ones.
+                Having fun while developing or creating APIs is the only way to succeed in it. Most importantly is to be confident to face the challenges thrown at you!.
               </div>
             </div>
             <div className='hover:scale-110'>
@@ -195,7 +195,7 @@ function Skills() {
               </div>
               <p className='text-2xl'>Self Learning</p>
               <div className='text-slate-500'>
-                For this level of knowledge I've recieved over these few years, Self Learning was the only way. A good determination to learn, and try new things brought me here. 
+                For this level of knowledge I've recieved over these few years, Self Learning was the only way. A good determination to learn, and the curiosity to try new things brought me to where I stand. 
               </div>
             </div>
             

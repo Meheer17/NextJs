@@ -69,7 +69,7 @@ export default function EditCert({details, fileId}) {
 
     return(
         <> 
-            <h1 className="text-center text-2xl text-gray-300 font-serif">Update Certificate Data {form.title}</h1>
+            <h1 className="text-center pt-24 text-2xl text-gray-300 font-serif">Update Certificate Data {form.title}</h1>
             
            {
             isSubmitting ? <div className="mx-auto text-center w-10 h-10 pt-10 "><Loader/></div> : (

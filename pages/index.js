@@ -59,7 +59,7 @@ function AbtMe() {
             <p className='text-xl mt-3 text-gray-500'>Hardwork, Determination and persistance, These are the values I follow and believe. The reason im here is because of these values ive been following all this long and got my way thru...</p>
           </div>
           <div className='mt-16'>
-            <Link href={'/aboutme'}><a className="underline hover:no-underline underline-offset-8 hover:bg-sky-500 p-3 rounded">About Me</a></Link>
+            <Link href={'/aboutme'}><a className="underline text-2xl hover:no-underline underline-offset-8 hover:bg-sky-500 p-3 rounded">About Me</a></Link>
           </div>
         </div>
           <Image src={"/new.jpg"} height={1080} width={1920}/>

@@ -17,6 +17,8 @@ export default function Edit({details, fileId}) {
     const [errors, setError] = useState({})
     const router = useRouter()
 
+    console.log(form.tags)
+
     useEffect(() => {
         if(isSubmitting){
             if(Object.keys(errors).length == 0){
@@ -41,6 +43,14 @@ export default function Edit({details, fileId}) {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    function handleTags(e){
+        var tag = e.target.value.split(",")
+        setForm({
+            ...form,
+            tags: tag
+        }) 
     }
 
     function handleSubmit(e){
@@ -114,7 +124,11 @@ export default function Edit({details, fileId}) {
                             <label className="block mb-2 text-xl font-medium text-gray-900 ">Github</label>
                             <input onChange={handleChange} type="text" value={form.github} name='github' id="github" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
                         </div>
-                      <div className="mb-6">
+                        <div className="mb-6">
+                            <label className="block mb-2 text-xl font-medium text-gray-900 ">Tags</label>
+                            <input onChange={handleTags} type="text" value={form.tags} name='tags' id="tags" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
+                        </div>
+                        <div className="mb-6">
                             <label className="block mb-2 text-xl font-medium text-gray-900 ">Priority Number</label>
                             <input onChange={handleChange} type="number" value={form.pri} name='pri' id="pri" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
                         </div>

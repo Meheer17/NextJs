@@ -17,8 +17,6 @@ export default function Edit({details, fileId}) {
     const [errors, setError] = useState({})
     const router = useRouter()
 
-    console.log(form.tags)
-
     useEffect(() => {
         if(isSubmitting){
             if(Object.keys(errors).length == 0){

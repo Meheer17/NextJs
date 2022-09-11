@@ -12,6 +12,7 @@ export default function Footer(){
           <li><Link href="/"><a className="mr-4 hover:underline md:mr-6">Home</a></Link></li>
           <li><Link href="/projects"><a className="mr-4 hover:underline md:mr-6">Project</a></Link></li>
           <li><Link href="/certificates"><a className="mr-4 hover:underline md:mr-6">Certificates</a></Link></li>
+          <li><Link href="/aboutme"><a className="mr-4 underline decoration-sky-500 decoration-4 hover:underline md:mr-6">About Me</a></Link></li>
         </ul>
       </div>
       <div className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <Link href="/"><a className="hover:underline"></a></Link> Created By Meheer.</div>

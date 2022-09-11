@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Head from "next/head"
 import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,7 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function AboutMe() {
     return (
         <>  
-            <section className="pt-24" style={{backgroundImage:"linear-gradient(90deg, rgba(24,24,35,1) 38%, rgba(0,0,0,1) 38%)"}}>
+            <Head>
+                <title>About Me</title>
+            </Head>
+            <section className="py-24" style={{backgroundImage:"linear-gradient(90deg, rgba(24,24,35,1) 38%, rgba(0,0,0,1) 38%)"}}>
                 <div className="mx-auto max-w-xl h-screen helo"  ></div>
             </section>
             <div className="mx-auto p-4 max-w-3xl mt-5 text-slate-400 pb-10">
@@ -20,7 +23,7 @@ export default function AboutMe() {
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> In the 10th grade, I started learning JS and React from scratch as I found it fun and amazing. I continued this journey aiming primarily for some fun, and yes! It was indeed fun.  </li>
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> As time progressed, I understood that pursuing Web Developing was something which really interested me. In pursuit of this, I learned backend and API development. This was where my hunt for real challenging and fun tasks and my interest in backend grew exorbitantly. </li>
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> Eventually, as I completed many tasks to earn certificates, I found the answer to “Can I do it?”. </li>
-                    <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> And all this brought me to where I am right now, And I'm really glad I'm here!!. Well, there's one unanswered question which I believe will be answered soon. </li>
+                    <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500"> And all this brought me to where I am right now, And I'm really glad I'm here!!. Well, there's one unanswered question which I believe will be answered soon. </span></li>
                 </ul>
 
                 <h1 className="text-3xl text-slate-300 mt-10">Why I am obsessed with coding?</h1>
@@ -31,7 +34,7 @@ export default function AboutMe() {
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> Programming is so vast that I feel no one could conquer that easily. Well, this is my opportunity to learn a lot more than I could!!</li>
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> And when I give my best, it always comes with the price of learning something new. All this day, I've done my best, and there is more to go.</li>
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> Programming is my way and I've gotta conquer it all, and for this, I need to learn more which is why I am obsessed with programming as there is no end to this journey!!</li>
-                    <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> For the projects I take up or work on, I focus on the impact created by it and the extent to which it makes. And this is something I always loved to do!! </li>
+                    <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500"> For the projects I take up or work on, I focus on the impact created by it and the extent to which it makes. And this is something I always loved to do!!</span></li>
                 </ul>
 
                 <h1 className="text-3xl text-slate-300 mt-10">How I wind down.</h1>
@@ -39,7 +42,7 @@ export default function AboutMe() {
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> I love watching anime, My all-time favourite would be One Piece and Naruto.</li>
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> I also enjoy a healthy routine and play outdoor games such as basketball and badminton.</li>
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> My other interest includes hanging out with friends on a nice evening.</li>
-                    <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> Travelling is another one of my interests. I love to travel to new places and experience a wide array of things and look beyond the horizon.</li>
+                    <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /><span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500"> Travelling is another one of my interests. I love to travel to new places and experience a wide array of things and look beyond the horizon.</span></li>
                 </ul>
 
             </div>

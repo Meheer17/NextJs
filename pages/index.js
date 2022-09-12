@@ -68,6 +68,55 @@ function AbtMe() {
   )
 }
 
+function ProgressBar() {
+  const speed = useSWR('/api/projects', fetcher).data
+  if(!speed) return <div className='p-16 text-slate-500'>Loading Projects...</div>
+  var projects = speed.data
+  const count = {}
+  const skillset = []
+  const skillRatio = {}
+  
+  for(let i = 0; i < projects.length; i++ ) {
+    for(let t = 0; t < projects[i].tags.length; t++ ) {
+      if(skillset.includes(projects[i].tags[t])){
+        skillRatio[projects[i].tags[t]] += 1
+      } else {
+        skillset.push(projects[i].tags[t])
+        skillRatio[projects[i].tags[t]] = 1
+      }
+    }
+  }
+  
+  for(let i = 0; i < skillset.length; i++) {
+    count[skillset[i]] = (skillRatio[skillset[i]] / projects.length) * 100 
+  }
+
+  return (
+    <>
+      <div className='p-24 font-mono'>
+        <h1 className='text-6xl text-white my-5'>Projects Language Ratio</h1>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5 grid-cols-1'>
+            {skillset.map(s => {
+              return (
+                <>
+                  <div>
+
+                    <div className="mb-1 text-xl text-slate-400 font-bold capitalize">{s}</div>
+                    <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
+                      <div className="bg-orange-500 h-4 rounded-full" style={{width: `${count[s]}%`}}></div>
+                    </div>
+
+                  </div>
+                </>
+              )
+            })}
+        </div>
+      </div>
+    </>
+  )
+
+}
+
 function Projects() {
   const speed = useSWR('/api/projects', fetcher).data
   if(!speed) return <div className='p-16 text-slate-500'>Loading Projects...</div>
@@ -77,7 +126,7 @@ function Projects() {
 
   return (
     <>
-      <div className='grid md:grid-cols-2 gap-5 grid-cols-1 md:p-16 p-5 pb-24'>
+      <div className='grid md:grid-cols-2 gap-5 grid-cols-1 md:p-16 p-5'>
         <div className='grid grid-rows-1'>
           
           <div>
@@ -144,6 +193,8 @@ function Projects() {
           </div>
 
       </div>
+      <ProgressBar/>
+
     </>
   )
 }

@@ -31,17 +31,15 @@ export default function Projects() {
     })
   }
 
-  for(let i = 0; i < sorted.length; i++ ) {
-    for(let t = 0; t < sorted[i].tags.length; t++ ) {
-      if(skillset.includes(sorted[i].tags[t])){
+  for(let i = 0; i < projects.length; i++ ) {
+    for(let t = 0; t < projects[i].tags.length; t++ ) {
+      if(skillset.includes(projects[i].tags[t])){
         continue
       } else {
-        skillset.push(sorted[i].tags[t])
+        skillset.push(projects[i].tags[t])
       }
     }
   }
-
-  console.log(skillset)
 
   return (
     <div className='p-10'>
@@ -51,14 +49,15 @@ export default function Projects() {
       
       <h1 className="text-sky-600 mb-5 text-2xl text-center md:mt-16 mt-14">Projects</h1>
       <div className='text-slate-300 h-24 mx-auto text-center'>
+        {ntype == "all" ? <button  className='p-1 mx-2 bg-slate-200 text-black rounded capitalize' onClick={(e) => setType("all")}>all</button> : <button className='p-1 mx-2 capitalize' onClick={(e) => setType("all")}>all</button>}
+        {skillset.map(s => {
+          return (
+            <>
+              {ntype == s ? <button  className='p-1 mx-2 bg-slate-200 text-black rounded capitalize' onClick={(e) => setType(s)}>{s}</button> : <button className='p-1 mx-2 capitalize' onClick={(e) => setType(s)}>{s}</button>}
+            </>
+          )
+        })}
 
-        {ntype == "all" ? <button  className='p-1 mx-2 bg-slate-200 text-black rounded' onClick={(e) => setType("all")}>ALL</button> : <button  className='p-1 mx-2' onClick={(e) => setType("all")}>ALL</button>}
-        {ntype == "html" ? <button className='p-1 mx-2 bg-slate-200 text-black rounded' onClick={(e) => setType("html")}>HTML</button> : <button className='p-1 mx-2' onClick={(e) => setType("html")}>HTML</button>}
-        {ntype == "js" ? <button className='p-1 mx-2 bg-slate-200 text-black rounded' onClick={(e) => setType("js")}>JS</button> : <button className='p-1 mx-2'  onClick={(e) => setType("js")}>JS</button>}
-        {ntype == "node" ? <button className='p-1 mx-2 bg-slate-200 text-black rounded' onClick={(e) => setType("node")}>NODEJS</button> : <button className='p-1 mx-2'  onClick={(e) => setType("node")}>NODEJS</button>}
-        {ntype == "express" ?  <button  className='p-1 mx-2 bg-slate-200 text-black rounded' onClick={(e) => setType("express")}>EXPRESS</button> : <button  className='p-1 mx-2' onClick={(e) => setType("express")}>EXPRESS</button>}
-        {ntype == "chai" ? <button className='p-1 mx-2 bg-slate-200 text-black rounded' onClick={(e) => setType("chai")}>CHAI</button> : <button className='p-1 mx-2'  onClick={(e) => setType("chai")}>CHAI</button>}
-      
       </div>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 place-content-evenly'>
 

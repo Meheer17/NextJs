@@ -42,7 +42,7 @@ function Intro() {
                 <p>I'm Meheer.</p>
                 <p>A Web Developer</p>
                 <p className='text-slate-400'>Based In India.</p>
-                <p className='text-sm'>If you are looking for a person who loves coding and creating api well that's ME(HEER)!</p>
+                <p className='text-sm'>If you are looking for a person who loves coding and creating APIs, well that's ME(HEER)!</p>
                 </div>
             </div>
         </div>
@@ -204,7 +204,7 @@ function Skills() {
     <div className='grid py-24 md:p-16 p-5 gap-10 md:grid-cols-3 grid-cols-1' style={{backgroundColor: "rgba(0,0,0,1)"}}>
           <div className='text-white text-6xl'>
             Skillset
-            <p className='pt-5 text-xl text-slate-400 '>With skills in over many methods of creating a website, I am the perfect person to hire when it comes to a full fledged project. Whatever your needs are, I can pretty much take on any challenge.</p>
+            <p className='pt-5 text-xl text-slate-400 '>With skills over many methods of creating a website, I am the perfect person to hire when it comes to a full fledged project. Whatever your needs are, I can pretty much take on any challenge.</p>
           </div>
           <div className='text-white grid gap-10 grid-rows-2'>
             <div className='hover:scale-110'>
@@ -215,7 +215,7 @@ function Skills() {
               </div>
               <p className='text-2xl'>Web Developemnt</p>
               <div className='text-slate-500'>
-                Working with multiple websites and projects has given me an extensive knowledge on how to create websites using the basics i've learnt over the years.
+                Working with multiple websites and projects has given me extensive knowledge on how to create websites using the basics I've learnt over the years.
               </div>
             </div>
             <div className='hover:scale-110'>
@@ -224,7 +224,7 @@ function Skills() {
               </div>
               <p className='text-2xl'>BackEnd Developemnt</p>
               <div className='text-slate-500'>
-                A really good idea and a clear understanding of how to create a smooth flawless code running with the lowest latency possible, what more would you want?.
+                A really good idea and a clear understanding of how to create a smooth flawless code running with the lowest latency possible, what more would you want?
               </div>
             </div>
             
@@ -237,7 +237,7 @@ function Skills() {
               </div>
               <p className='text-2xl'>Api Development</p>
               <div className='text-slate-500'>
-                Having fun while developing or creating APIs is the only way to succeed in it. Most importantly is to be confident to face the challenges thrown at you!.
+                Having fun while developing or creating APIs is the only way to succeed in it. Most importantly, be confident to face the challenges thrown at you... Which I believe I'm good at!
               </div>
             </div>
             <div className='hover:scale-110'>
@@ -246,7 +246,7 @@ function Skills() {
               </div>
               <p className='text-2xl'>Self Learning</p>
               <div className='text-slate-500'>
-                For this level of knowledge I've recieved over these few years, Self Learning was the only way. A good determination to learn, and the curiosity to try new things brought me to where I stand. 
+                For the level of knowledge I've acquired over these few years, self learning was the only way. Determination to learn, and the curiosity to try new things brought me to where I stand. 
               </div>
             </div>
             

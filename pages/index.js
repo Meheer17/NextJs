@@ -71,8 +71,8 @@ function AbtMe() {
 function Projects() {
   const speed = useSWR('/api/projects', fetcher).data
   if(!speed) return <div className='p-16 text-slate-500'>Loading Projects...</div>
-  const projects = speed.data.reverse()
-  if(projects == speed.data.reverse) return <div className='p-16 text-slate-500'>Loading Projects...</div>
+  var projects = speed.data
+  projects = [...projects].sort((a,b) => a.pri - b.pri)
 
 
   return (

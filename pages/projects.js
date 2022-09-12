@@ -14,8 +14,7 @@ export default function Projects() {
   const data = useSWR('/api/projects', fetcher).data  
   const speed = useSWR('/api/certificates', fetcher)
   const [ntype, setType] = useState('all')
-
-  console.log(ntype)
+  const skillset = []
 
   if(!data) return <div><h1 className="text-sky-600 pt-24 mb-5 text-2xl text-center">Loading The Projects...</h1></div>
   const projects = data.data
@@ -31,6 +30,18 @@ export default function Projects() {
       }
     })
   }
+
+  for(let i = 0; i < sorted.length; i++ ) {
+    for(let t = 0; t < sorted[i].tags.length; t++ ) {
+      if(skillset.includes(sorted[i].tags[t])){
+        continue
+      } else {
+        skillset.push(sorted[i].tags[t])
+      }
+    }
+  }
+
+  console.log(skillset)
 
   return (
     <div className='p-10'>
@@ -62,8 +73,8 @@ export default function Projects() {
                   <div className="mt-5 text-white italic font-bold text-xl">What Have I Learnt?</div>
                   <div className="font-medium text-slate-500 text-lg mb-3 text-justify">{pr.learnt}</div>
                 </div>
-                <div className='grow-1'></div>
-                <div className='p-3 pb-4 justify-between flex bottom-0'>
+                <div className='grow'></div>
+                <div className='p-3 pb-4 justify-between flex'>
                   {pr.link ? <Link href={pr.link}><a target={"_blank"} className="bg-black text-white m-2 rounded-lg p-4"><FontAwesomeIcon className='mr-2 text-white' icon={faLink} />View</a></Link> : null}
                   <Link href={`/${pr._id}/edit-projects`}><a className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faPenToSquare} />Edit</a></Link>
                   {pr.github ? <Link href={pr.github}><a target={"_blank"} className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faGithub} />GitHub</a></Link> : null}

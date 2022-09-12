@@ -48,7 +48,7 @@ export default function Projects() {
       </Head>
       
       <h1 className="text-sky-600 mb-5 text-2xl text-center md:mt-16 mt-14">Projects</h1>
-      <div className='text-slate-300 h-24 mx-auto text-center'>
+      <div className='text-slate-300 mb-10 mx-auto text-center'>
         {ntype == "all" ? <button  className='p-1 mx-2 bg-slate-200 text-black rounded capitalize' onClick={(e) => setType("all")}>all</button> : <button className='p-1 mx-2 capitalize' onClick={(e) => setType("all")}>all</button>}
         {skillset.map(s => {
           return (

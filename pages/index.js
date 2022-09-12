@@ -93,7 +93,7 @@ function ProgressBar() {
 
   return (
     <>
-      <div className='p-24 font-mono'>
+      <div className='md:p-24 px-12 pb-10 font-mono'>
         <h1 className='text-6xl text-white my-5'>Projects Language Ratio</h1>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5 grid-cols-1'>
             {skillset.map(s => {
@@ -186,7 +186,7 @@ function Projects() {
             </a></Link>
           </div>
 
-            <div className='flex justify-center '>
+            <div className='flex justify-center mt-10'>
               <h1 className='text-white'><Link href={'/projects'}><a className='md:text-2xl text-sm text-white p-3 border-2 duration-500  border-sky-300 hover:bg-sky-400 hover:text-gray-900 rounded'>VIEW ALL PROJECTS</a></Link></h1>
             </div>
 

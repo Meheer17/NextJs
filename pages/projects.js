@@ -24,7 +24,8 @@ export default function Projects() {
     sorted = [...projects].sort((a,b) => a.pri - b.pri)
   } else {
     sorted = []
-    const hello = [...projects].sort((a) => {
+    const det = [...projects].sort((a,b) => a.pri - b.pri)
+    const hello = [...det].sort((a) => {
       if (a.tags.includes(ntype)) {
          sorted.push(a)
       }

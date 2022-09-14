@@ -12,17 +12,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-
 export default function Index() {
-  const data = useSWR('/api/certificates', fetcher)
-  // const name = process.env.OWNER
-
+  const name = User()
   return(
     <>
       <Head>
         <title>Home</title>
       </Head>
-      {/* {name ? <div>HELLO</div> : <div>NOPE</div>} */}
       <Intro/>
       <AbtMe/>
       <Skills/>
@@ -30,6 +26,19 @@ export default function Index() {
     </>
   )
 }  
+
+export function User(){
+  const auth = useSWR('/api/data', fetcher).data
+  if (!auth) return <></>
+  var name = false
+
+  if(process.env.UNAME === auth.data[0].username && process.env.PASS === auth.data[0].pass){
+    name = true
+  }
+
+  return name
+
+} 
 
 function Intro() {
   return (
@@ -99,9 +108,9 @@ function ProgressBar() {
             {skillset.map(s => {
               return (
                 <>
-                  <div>
+                  <div id={s}>
 
-                    <div className="mb-1 text-xl text-slate-400 font-bold capitalize">{s}</div>
+                    <div className="mb-1 text-xl text-slate-400 font-bold capitalize">{s +" - "+ count[s] + "%"}</div>
                     <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
                       <div className="bg-orange-500 h-4 rounded-full" style={{width: `${count[s]}%`}}></div>
                     </div>

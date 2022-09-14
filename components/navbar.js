@@ -46,9 +46,6 @@ export default function Navbar() {
               <Link href='/'><a className="py-4 px-2  font-semibold transition duration-300 hover:text-blue-500">Home</a></Link>
               <Link href='/projects'><a className="py-4 px-2  font-semibold transition duration-300 hover:text-blue-500">Projects</a></Link>
               <Link href='/certificates'><a className="py-4 px-2 font-semibold transition duration-300 hover:text-blue-500">Certificates</a></Link>
-              <Link href='/new-post'><a className="py-4 px-2 font-semibold transition duration-300 bg-sky-300 text-gray-900 rounded-lg hover:text-blue-500">New Post</a></Link>
-              <Link href='/certificate-post'><a className="py-4 px-2 ml-3 font-semibold transition duration-300 bg-sky-300 text-gray-900 rounded-lg hover:text-blue-500">New Certificate</a></Link>
-              <button className="py-4 text-xl px-2  font-semibold transition duration-300 hover:text-blue-500" onClick={dar} >{theme == "light" ? IcRoundDarkMode() : MaterialSymbolsLightMode()}</button>
             </div>
 
             <div className="flex items-center md:hidden">

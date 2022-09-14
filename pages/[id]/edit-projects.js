@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import useSWR from 'swr'
+const fetcher = (...args) => fetch(...args).then(res => res.json())
+
 
 export async function getServerSideProps(ctx) {
     const id = ctx.params.id
@@ -16,6 +19,7 @@ export default function Edit({details, fileId}) {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
+    const auth = useSWR('/api/data', fetcher).data
 
     useEffect(() => {
         if(isSubmitting){
@@ -26,6 +30,9 @@ export default function Edit({details, fileId}) {
             }
         }
     }, [errors])
+
+    if (!auth) return <></>
+    var name = false
 
     const createProject = async () => {
         try {
@@ -92,53 +99,58 @@ export default function Edit({details, fileId}) {
         }
     }
 
-    return(
-        <> 
-            <h1 className="text-center pt-24 text-2xl text-gray-300 font-serif">Update Project Data {form.title}</h1>
-            
-           {
-            isSubmitting ? <div className="mx-auto text-center w-10 h-10 pt-10"><Loader/></div> : (
+    if(process.env.UNAME === auth.data[0].username && process.env.PASS === auth.data[0].pass){
+        return(
+            <> 
+                <h1 className="text-center pt-24 text-2xl text-gray-300 font-serif">Update Project Data {form.title}</h1>
+                
+               {
+                isSubmitting ? <div className="mx-auto text-center w-10 h-10 pt-10"><Loader/></div> : (
+    
+                    <div className="p-10 drop-shadow-xl ">
+                        <form className="mx-auto max-w-5xl p-5 border-2 bg-slate-400 border-slate-900 rounded-md" onSubmit={handleSubmit}>
+                            <Image height={500} width={1000} src={form.image} /> 
+                            <div className="mb-6 mt-3">
+                                <label className="block mb-2 text-xl font-medium text-gray-900 ">Title</label>
+                                <input onChange={handleChange} value={form.title} type="text" id="title" name='title' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                            </div>
+                            <div className="mb-6">
+                                <label className="block mb-2 text-xl font-medium text-gray-900 ">Description</label>
+                                <textarea onChange={handleChange} value={form.description} rows="10" name='description' type="text" id="description" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                            </div>
+                            <div className="mb-6">
+                                <label className="block mb-2 text-xl font-medium text-gray-900 ">Learnt</label>
+                                <input onChange={handleChange} type="text" value={form.learnt} name='learnt' id="learnt" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                            </div>
+                            <div className="mb-6">
+                                <label className="block mb-2 text-xl font-medium text-gray-900 ">Link</label>
+                                <input onChange={handleChange} type="text" value={form.link} name='link' id="link" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
+                            </div>
+                            <div className="mb-6">
+                                <label className="block mb-2 text-xl font-medium text-gray-900 ">Github</label>
+                                <input onChange={handleChange} type="text" value={form.github} name='github' id="github" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
+                            </div>
+                            <div className="mb-6">
+                                <label className="block mb-2 text-xl font-medium text-gray-900 ">Tags</label>
+                                <input onChange={handleTags} type="text" value={form.tags} name='tags' id="tags" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
+                            </div>
+                            <div className="mb-6">
+                                <label className="block mb-2 text-xl font-medium text-gray-900 ">Priority Number</label>
+                                <input onChange={handleChange} type="number" value={form.pri} name='pri' id="pri" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
+                            </div>
+    
+                            <button type="submit" className="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Submit</button>
+                            <button onClick={dele} className="mt-5 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full ml-3 sm:w-auto px-5 py-2.5 text-center ">Delete</button>
+                        </form>
+                    </div>
+                )
+               }
+            </>
+        )
+    } else {
+        router.push('/')
+    }
 
-                <div className="p-10 drop-shadow-xl ">
-                    <form className="mx-auto max-w-5xl p-5 border-2 bg-slate-400 border-slate-900 rounded-md" onSubmit={handleSubmit}>
-                        <Image height={500} width={1000} src={form.image} /> 
-                        <div className="mb-6 mt-3">
-                            <label className="block mb-2 text-xl font-medium text-gray-900 ">Title</label>
-                            <input onChange={handleChange} value={form.title} type="text" id="title" name='title' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
-                        </div>
-                        <div className="mb-6">
-                            <label className="block mb-2 text-xl font-medium text-gray-900 ">Description</label>
-                            <textarea onChange={handleChange} value={form.description} rows="10" name='description' type="text" id="description" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
-                        </div>
-                        <div className="mb-6">
-                            <label className="block mb-2 text-xl font-medium text-gray-900 ">Learnt</label>
-                            <input onChange={handleChange} type="text" value={form.learnt} name='learnt' id="learnt" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
-                        </div>
-                        <div className="mb-6">
-                            <label className="block mb-2 text-xl font-medium text-gray-900 ">Link</label>
-                            <input onChange={handleChange} type="text" value={form.link} name='link' id="link" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
-                        </div>
-                        <div className="mb-6">
-                            <label className="block mb-2 text-xl font-medium text-gray-900 ">Github</label>
-                            <input onChange={handleChange} type="text" value={form.github} name='github' id="github" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
-                        </div>
-                        <div className="mb-6">
-                            <label className="block mb-2 text-xl font-medium text-gray-900 ">Tags</label>
-                            <input onChange={handleTags} type="text" value={form.tags} name='tags' id="tags" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
-                        </div>
-                        <div className="mb-6">
-                            <label className="block mb-2 text-xl font-medium text-gray-900 ">Priority Number</label>
-                            <input onChange={handleChange} type="number" value={form.pri} name='pri' id="pri" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
-                        </div>
-
-                        <button type="submit" className="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Submit</button>
-                        <button onClick={dele} className="mt-5 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full ml-3 sm:w-auto px-5 py-2.5 text-center ">Delete</button>
-                    </form>
-                </div>
-            )
-           }
-        </>
-    )
 }
 
 function Loader() {

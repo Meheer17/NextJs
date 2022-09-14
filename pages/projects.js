@@ -13,12 +13,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Projects() {
   const data = useSWR('/api/projects', fetcher).data  
   const speed = useSWR('/api/certificates', fetcher)
+  const auth = useSWR('/api/data', fetcher).data
   const [ntype, setType] = useState('all')
   const skillset = []
 
   if(!data) return <div><h1 className="text-sky-600 pt-24 mb-5 text-2xl text-center">Loading The Projects...</h1></div>
   const projects = data.data
   var sorted = projects
+
+  if (!auth) return <></>
+  var name = false
+  if(process.env.UNAME === auth.data[0].username && process.env.PASS === auth.data[0].pass){
+    name = true
+  }
 
   if (ntype === "all"){
     sorted = [...projects].sort((a,b) => a.pri - b.pri)
@@ -76,7 +83,7 @@ export default function Projects() {
                 <div className='grow'></div>
                 <div className='p-3 pb-4 justify-between flex'>
                   {pr.link ? <Link href={pr.link}><a target={"_blank"} className="bg-black text-white m-2 rounded-lg p-4"><FontAwesomeIcon className='mr-2 text-white' icon={faLink} />View</a></Link> : null}
-                  <Link href={`/${pr._id}/edit-projects`}><a className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faPenToSquare} />Edit</a></Link>
+                  {name ? <Link href={`/${pr._id}/edit-projects`}><a className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faPenToSquare} />Edit</a></Link> : null}
                   {pr.github ? <Link href={pr.github}><a target={"_blank"} className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faGithub} />GitHub</a></Link> : null}
                 </div>
               </div>

@@ -8,9 +8,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Certificates(){
   const data = useSWR('/api/certificates', fetcher).data
+  const auth = useSWR('/api/data', fetcher).data
 
   if(!data) return <div><h1 className="text-sky-600 mb-5 pt-24 text-2xl text-center">Loading The Certificates...</h1></div>
   const projects = data.data
+
+  if (!auth) return <></>
+  var name = false
+  if(process.env.UNAME === auth.data[0].username && process.env.PASS === auth.data[0].pass){
+    name = true
+  }
 
   return (
     <div className='p-10'>
@@ -33,7 +40,7 @@ export default function Certificates(){
               <div className='grow-1'></div>
               <div className='p-3 pb-4 justify-between flex bottom-0'>
                 <Link href={pr.link}><a target={"_blank"} className="bg-black text-white m-2 rounded-lg p-4"><FontAwesomeIcon className='mr-2 text-white' icon={faLink} />View</a></Link>
-                <Link href={`/${pr._id}/edit-certificate`}><a className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faPenToSquare} />Edit</a></Link>
+                {name ? <Link href={`/${pr._id}/edit-certificate`}><a className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faPenToSquare} />Edit</a></Link> : null }
               </div>
             </div>
             </div>

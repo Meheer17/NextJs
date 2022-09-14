@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 import Image from 'next/image'
+const fetcher = (...args) => fetch(...args).then(res => res.json())
+import useSWR from 'swr'
 
 export default function NewCert() {
     const [form, setForm] = useState({title:"", description:'', link:'', image: ''})
@@ -20,6 +22,10 @@ export default function NewCert() {
             }
         }
     }, [errors])
+
+    const auth = useSWR('/api/data', fetcher).data
+    if (!auth) return <></>
+    var name = false
 
     const createProject = async () => {
         console.log(form)
@@ -108,37 +114,41 @@ export default function NewCert() {
             </>
         )
     }
+    if(process.env.UNAME === auth.data[0].username && process.env.PASS === auth.data[0].pass){
+        return(
+            <div className='p-10'> 
+                <h1 className="text-center text-2xl text-gray-100 font-serif md:mt-16 mt-14">Create A New Certificate Detail</h1>
+                
+               {
+                isSubmitting ? <div className="mx-auto text-center w-10 h-10 pt-10 "><Loader/></div> : (
+    
+                    <div className="p-10 drop-shadow-xl text-gray-900 font-extrabold ">
+                        <form className="mx-auto max-w-5xl p-5 border-2 bg-zinc-300 border-slate-900 rounded-md text-lg" onSubmit={handleSubmit}>
+                            <Upload/>
+                            <div className="mb-6">
+                                <label className="block mb-2 font-medium">Title</label>
+                                <input onChange={handleChange} value={form.title} type="text" id="title" name='title' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                            </div>
+                            <div className="mb-6">
+                                <label className="block mb-2 font-medium">Description</label>
+                                <textarea onChange={handleChange} value={form.description} rows="10" name='description' type="text" id="description" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                            </div>
+                            <div className="mb-6">
+                                <label className="block mb-2 font-medium">Link</label>
+                                <input onChange={handleChange} value={form.link} type="text" name='link' id="link" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
+                            </div>
+    
+                            <button type="submit" className="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Submit</button>
+                        </form>
+                    </div>
+                )
+               }
+            </div>
+        )
+    } else {
+        router.push('/')
+    }
 
-    return(
-        <div className='p-10'> 
-            <h1 className="text-center text-2xl text-gray-100 font-serif md:mt-16 mt-14">Create A New Certificate Detail</h1>
-            
-           {
-            isSubmitting ? <div className="mx-auto text-center w-10 h-10 pt-10 "><Loader/></div> : (
-
-                <div className="p-10 drop-shadow-xl text-gray-900 font-extrabold ">
-                    <form className="mx-auto max-w-5xl p-5 border-2 bg-zinc-300 border-slate-900 rounded-md text-lg" onSubmit={handleSubmit}>
-                        <Upload/>
-                        <div className="mb-6">
-                            <label className="block mb-2 font-medium">Title</label>
-                            <input onChange={handleChange} value={form.title} type="text" id="title" name='title' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
-                        </div>
-                        <div className="mb-6">
-                            <label className="block mb-2 font-medium">Description</label>
-                            <textarea onChange={handleChange} value={form.description} rows="10" name='description' type="text" id="description" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
-                        </div>
-                        <div className="mb-6">
-                            <label className="block mb-2 font-medium">Link</label>
-                            <input onChange={handleChange} value={form.link} type="text" name='link' id="link" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
-                        </div>
-
-                        <button type="submit" className="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Submit</button>
-                    </form>
-                </div>
-            )
-           }
-        </div>
-    )
 }
 
     

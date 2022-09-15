@@ -99,7 +99,7 @@ export default function Edit({details, fileId}) {
         }
     }
 
-    if(process.env.UNAME === auth.data[0].username && process.env.PASS === auth.data[0].pass){
+    if(process.env.NEXT_PUBLIC_UNAME === auth.data[0].username && process.env.NEXT_PUBLIC_PASS === auth.data[0].pass){
         return(
             <> 
                 <h1 className="text-center pt-24 text-2xl text-gray-300 font-serif">Update Project Data {form.title}</h1>

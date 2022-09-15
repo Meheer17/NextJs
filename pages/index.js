@@ -112,7 +112,7 @@ function ProgressBar() {
                 <>
                   <div id={s}>
 
-                    <div className="mb-1 text-xl text-slate-400 font-bold capitalize">{s +" - "+ count[s] + "%"}</div>
+                    <div className="mb-1 text-xl text-slate-400 font-bold capitalize">{s +" - "+ Math.floor(count[s]) + "%"}</div>
                     <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
                       <div className="bg-orange-500 h-4 rounded-full" style={{width: `${count[s]}%`}}></div>
                     </div>

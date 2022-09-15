@@ -32,6 +32,8 @@ export function User(){
   if (!auth) return <></>
   var name = false
 
+  console.log(process.env.UNAME, process.env.PASS)
+
   if(process.env.UNAME === auth.data[0].username && process.env.PASS === auth.data[0].pass){
     name = true
   }

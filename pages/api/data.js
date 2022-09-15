@@ -7,7 +7,7 @@ dbConnect()
 export default async function handler(req, res){
   const {method} = req;
 
-  if (process.env.UNAME) {
+  // if (process.env.UNAME) {
     
     switch (method) {
   
@@ -24,8 +24,8 @@ export default async function handler(req, res){
         res.status(400).json({error: "ERROR"})
         break;
     }
-  } else {
-    res.status(400).json({data: [{username: "NULL", pass: "NULL"}]});
-  }
+  // } else {
+  //   res.status(400).json({data: [{username: "NULL", pass: "NULL"}]});
+  // }
 
 }

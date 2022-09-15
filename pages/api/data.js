@@ -14,7 +14,7 @@ export default async function handler(req, res){
       case 'GET':
         try {
           const project = await User.find()
-          res.status(400).json({data: project});
+          res.status(200).json({data: project});
         } catch (error) {
           res.status(400).json({success:false});
         }

@@ -3,6 +3,7 @@ import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch';
 import Image from 'next/image'
 import Link from 'next/link'
+import Contact from '../components/contactme'
 
 // import your icons
 import { faBookOpenReader } from '@fortawesome/free-solid-svg-icons';
@@ -23,6 +24,7 @@ export default function Index() {
       <AbtMe/>
       <Skills/>
       <Projects/>
+      <Contact/>
     </>
   )
 }  

@@ -32,11 +32,11 @@ export default function Projects() {
   } else {
     sorted = []
     const det = [...projects].sort((a,b) => a.pri - b.pri)
-    const hello = [...det].sort((a) => {
-      if (a.tags.includes(ntype)) {
-         sorted.push(a)
+    for (let i = 0; i < det.length; i++) {
+      if(det[i].tags.includes(ntype)){
+        sorted.push(det[i])
       }
-    })
+    }
   }
 
   for(let i = 0; i < projects.length; i++ ) {

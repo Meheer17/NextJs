@@ -7,7 +7,7 @@ dbConnect()
 export default async function handler(req, res){
   const {method} = req;
 
-  if (process.env.UNAME) {
+  if (process.env.NEXT_PUBLIC_UNAME) {
     
     switch (method) {
   

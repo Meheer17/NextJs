@@ -114,7 +114,7 @@ export default function NewCert() {
             </>
         )
     }
-    if(process.env.UNAME === auth.data[0].username && process.env.PASS === auth.data[0].pass){
+    if(process.env.NEXT_PUBLIC_UNAME === auth.data[0].username && process.env.NEXT_PUBLIC_PASS === auth.data[0].pass){
         return(
             <div className='p-10'> 
                 <h1 className="text-center text-2xl text-gray-100 font-serif md:mt-16 mt-14">Create A New Certificate Detail</h1>

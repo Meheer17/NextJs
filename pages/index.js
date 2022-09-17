@@ -8,12 +8,13 @@ import Contact from '../components/contactme'
 // import your icons
 import { faBookOpenReader } from '@fortawesome/free-solid-svg-icons';
 import { faHtml5, faCss3Alt, faSquareJs, faNodeJs, faEnvira } from '@fortawesome/free-brands-svg-icons';
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 export default function Index() {
+  const auth = useSWR('/api/data', fetcher)
+  const c = useSWR('/api/certificates', fetcher)  
   const name = User()
   return(
     <>
@@ -48,7 +49,7 @@ function Intro() {
             <div className='boxo'>
                 <Image src="/profile.jpg" width="1920" height="1200" className='z-0'/>
             </div>
-            <div className='text-6xl font-mono text-slate-100 flex items-center z-10'>
+            <div className='md:text-6xl text-5xl font-mono text-slate-100 flex items-center z-10'>
                 <div className='font-black'>
                 <p>I'm Meheer.</p>
                 <p>A Web Developer</p>

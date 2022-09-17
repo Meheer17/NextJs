@@ -37,6 +37,7 @@ export default function Projects() {
         sorted.push(det[i])
       }
     }
+    shuffle(sorted)
   }
 
   for(let i = 0; i < projects.length; i++ ) {
@@ -49,8 +50,21 @@ export default function Projects() {
     }
   }
 
+  function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;  
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }
+  
+
   return (
-    <div className='p-10'>
+    <div className='md:p-16 p-5'>
       <Head>
         <title>Projects</title>
       </Head>

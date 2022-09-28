@@ -6,6 +6,7 @@ const ProjectSchema = new mongoose.Schema({
   description: {type: String, required: true},
   learnt: {type: String, required: true},
   link: {type: String},
+  ranid: {type: String, required: true},
   github: {type: String},
   tags: {type: [String], required: true},
   pri: {type: Number, required: true}

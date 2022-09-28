@@ -14,8 +14,8 @@ export async function getServerSideProps(ctx) {
 }
 
 export default function EditCert({details, fileId}) {
-    const {title, description, link, image} = details
-    const [form, setForm] = useState({title: title, description: description, link: link, image: image})
+    const {title, description, link, image, ranid} = details
+    const [form, setForm] = useState({title: title, description: description ,ranid: randomString(6,"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), link: link, image: image})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
@@ -34,9 +34,16 @@ export default function EditCert({details, fileId}) {
     if (!auth) return <></>
     var name = false
 
+    function randomString(length, chars) {
+        var result = "";
+        for (var i = length; i > 0; --i)
+          result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
+    }
+
     const createProject = async () => {
         try {
-            const res = await fetch(`${process.env.URL}/api/certificates/${fileId}`, {
+            const res = await fetch(`http://localhost:3000/api/certificates/${fileId}`, {
                 method: 'PUT',
                 headers:{
                     "Accept":"applocation/json",

@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
-
+import Contact from '../components/contactme'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function AboutMe() {
@@ -46,6 +46,7 @@ export default function AboutMe() {
                 </ul>
 
             </div>
+            <Contact/>
         </>
     )
 }

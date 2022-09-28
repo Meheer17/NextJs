@@ -25,8 +25,7 @@ export default async (req, res) => {
     
     case "PUT":
       try {
-        const certificate = await Certificate.findByIdAndUpdate(id, {title: req.body.title, description: req.body.description, image: req.body.image, link: req.body.link}, {new:true , runValidators: true})
-
+        const certificate = await Certificate.findByIdAndUpdate(id, {title: req.body.title, ranid: req.body.ranid, description: req.body.description, image: req.body.image, link: req.body.link}, {new:true , runValidators: true})
         if(!certificate){
           return res.status(400).json({success: false})
         }

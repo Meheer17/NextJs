@@ -18,7 +18,7 @@ export default async function handler(req, res){
       break;
 
     case 'POST':
-      const der = new Certificate({title: req.body.title, description: req.body.description, image: req.body.image, link: req.body.link});
+      const der = new Certificate({title: req.body.title, description: req.body.description,ranid: req.body.ranid, image: req.body.image, link: req.body.link});
       try {
         const certificate = await der.save()
         res.status(200).json({success: true, data: certificate})

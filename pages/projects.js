@@ -85,23 +85,18 @@ export default function Projects() {
 
       {sorted.map(pr => {
           return (
-            <div key={pr._id} className="bg-gray-900 rounded-sm w-full">
-              <Image src={pr.image} height={500} width={1000} priority/>
-              <div className='flex flex-col'>
-                <div className='p-3 pb-4'>
-                  <h1 className="font-extrabold text-white text-2xl text-left">{pr.title}</h1>
-                  <div className="font-medium text-slate-500 text-justify text-lg">{pr.description}</div>
-                  <div className="mt-5 text-white italic font-bold text-xl">What Have I Learnt?</div>
-                  <div className="font-medium text-slate-500 text-lg mb-3 text-justify">{pr.learnt}</div>
+            <>
+              <Link href={`/project/${pr.ranid}`}>
+                <div key={pr._id} className="bg-gray-900 text-white rounded-sm w-full hover:scale-110 hover:z-30 z-10 duration-200 hover:text-sky-400">
+                  <Image src={pr.image} height={500} width={1000} priority/>
+                  <div className='flex flex-col'>
+                    <div className='p-3 pb-4'>
+                      <h1 className="font-extrabold text-2xl text-center">{pr.title}</h1>
+                    </div>
+                  </div>
                 </div>
-                <div className='grow'></div>
-                <div className='p-3 pb-4 justify-between flex'>
-                  {pr.link ? <Link href={pr.link}><a target={"_blank"} className="bg-black text-white m-2 rounded-lg p-4"><FontAwesomeIcon className='mr-2 text-white' icon={faLink} />View</a></Link> : null}
-                  {name ? <Link href={`/${pr._id}/edit-projects`}><a className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faPenToSquare} />Edit</a></Link> : null}
-                  {pr.github ? <Link href={pr.github}><a target={"_blank"} className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faGithub} />GitHub</a></Link> : null}
-                </div>
-              </div>
-            </div>
+              </Link>
+            </>
           )
         })}
        </div>

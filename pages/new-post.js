@@ -6,7 +6,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
 import useSWR from 'swr'
 
 export default function NewProject() {
-    const [form, setForm] = useState({title:"", description:'', learnt:"", link:'', github:'', pri:0, tags:[], image: 'Link is here'})
+    const [form, setForm] = useState({title:"", description:'',ranid: randomString(6,"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), learnt:"", link:'', github:'', pri:0, tags:[], image: 'Link is here'})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
@@ -23,6 +23,13 @@ export default function NewProject() {
             }
         }
     }, [errors])
+
+    function randomString(length, chars) {
+        var result = "";
+        for (var i = length; i > 0; --i)
+          result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
+    }
 
     const auth = useSWR('/api/data', fetcher).data
     if (!auth) return <></>

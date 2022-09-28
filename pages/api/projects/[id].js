@@ -44,7 +44,7 @@ export default async (req, res) => {
     
     case "PUT":
       try {
-        const project = await Project.findByIdAndUpdate(id, {title: req.body.title, description: req.body.description, learnt: req.body.learnt,image: req.body.image, link: req.body.link, github: req.body.github, pri: req.body.pri, tags: req.body.tags}, {new:true , runValidators: true})
+        const project = await Project.findByIdAndUpdate(id, {title: req.body.title, description: req.body.description,ranid:req.body.ranid , learnt: req.body.learnt,image: req.body.image, link: req.body.link, github: req.body.github, pri: req.body.pri, tags: req.body.tags}, {new:true , runValidators: true})
 
         if(!project){
           return res.status(400).json({success: false})

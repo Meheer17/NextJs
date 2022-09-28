@@ -14,8 +14,8 @@ export async function getServerSideProps(ctx) {
 }
 
 export default function Edit({details, fileId}) {
-    const {title, image, description, learnt, pri, link, github, tags} = details
-    const [form, setForm] = useState({title: title , description: description, learnt: learnt, link: link, github:github, pri: pri, tags: tags, image: image})
+    const {title, image, description, learnt, pri, link, github, ranid, tags} = details
+    const [form, setForm] = useState({title: title , description: description, learnt: learnt, ranid: randomString(6,"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), link: link, github:github, pri: pri, tags: tags, image: image})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
@@ -36,7 +36,7 @@ export default function Edit({details, fileId}) {
 
     const createProject = async () => {
         try {
-            const res = await fetch(`${process.env.URL}api/projects/${fileId}`, {
+            const res = await fetch(`http://localhost:3000/api/projects/${fileId}`, {
                 method: 'PUT',
                 headers:{
                     "Accept":"applocation/json",
@@ -82,6 +82,12 @@ export default function Edit({details, fileId}) {
             ...form,
             [e.target.name]: e.target.value
         }) 
+    }
+    function randomString(length, chars) {
+        var result = "";
+        for (var i = length; i > 0; --i)
+          result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
     }
 
     const dele = () => {

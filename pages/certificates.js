@@ -30,23 +30,24 @@ export default function Certificates(){
 
       {projects.map(pr => {
           return (
-            <div key={pr._id} className="bg-gray-900 rounded-sm w-full">
-              <Image src={pr.image} height={500} width={1000} priority/>
-              <div className='flex flex-col'>
-              <div className='p-3 pb-4'>
-                <h1 className="font-extrabold text-white text-2xl text-left">{pr.title}</h1>
-                <div className="font-medium text-slate-500 text-justify text-lg">{pr.description}</div>
-              </div>
-              <div className='grow-1'></div>
-              <div className='p-3 pb-4 justify-between flex bottom-0'>
-                <Link href={pr.link}><a target={"_blank"} className="bg-black text-white m-2 rounded-lg p-4"><FontAwesomeIcon className='mr-2 text-white' icon={faLink} />View</a></Link>
-                {name ? <Link href={`/${pr._id}/edit-certificate`}><a className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faPenToSquare} />Edit</a></Link> : null }
-              </div>
-            </div>
-            </div>
-            
-            
-           
+            <>
+              <Link href={`/certificate/${pr.ranid}`}>
+                <div key={pr._id} className="bg-gray-900 rounded-sm w-full hover:scale-110 duration-200 text-white hover:text-sky-400 z-10 hover:z-30">
+                  <Image src={pr.image} height={500} width={1000} priority/>
+                  <div className='flex flex-col'>
+                    <div className='p-3 pb-4'>
+                      <h1 className="font-extrabold text-2xl text-center">{pr.title}</h1>
+                      {/* <div className="font-medium text-slate-500 text-justify text-lg">{pr.description}</div> */}
+                    </div>
+                    {/* <div className='grow-1'></div>
+                    <div className='p-3 pb-4 justify-between flex bottom-0'>
+                      <Link href={pr.link}><a target={"_blank"} className="bg-black text-white m-2 rounded-lg p-4"><FontAwesomeIcon className='mr-2 text-white' icon={faLink} />View</a></Link>
+                      {name ? <Link href={`/${pr._id}/edit-certificate`}><a className="bg-black text-white m-2 rounded-lg p-4 "><FontAwesomeIcon className='mr-2 text-white' icon={faPenToSquare} />Edit</a></Link> : null }
+                    </div> */}
+                  </div>
+                </div>
+              </Link>
+            </>
           )
         })}
 

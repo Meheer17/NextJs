@@ -135,7 +135,6 @@ function Projects() {
   var projects = speed.data
   projects = [...projects].sort((a,b) => a.pri - b.pri)
 
-
   return (
     <>
       <div className='grid md:grid-cols-2 gap-5 grid-cols-1 md:p-16 p-5'>
@@ -147,52 +146,26 @@ function Projects() {
           </div>
 
           <div className='hover:scale-110 duration-300 mt-3 text-white hover:text-blue-400 hover:z-30'>
-            <Link href={`${projects[0].link}`}><a target={"_blank"}>
+            <Link href={`/project/${projects[0].ranid}`}><a>
             <div key={projects[0]._id} className="bg-gray-900 rounded-sm w-full">
               <Image src={projects[0].image} height={500} width={1000} priority/>
               <div className='p-3'>
-                <h1 className="font-extrabold text-2xl text-left">{projects[0].title}</h1>
-                <div className="font-medium text-slate-500 text-justify text-lg">{projects[0].description}</div>
+                <h1 className="font-extrabold text-2xl text-center">{projects[0].title}</h1>
               </div>
             </div>
             </a></Link>
           </div>
 
-          <div className='hover:scale-110 duration-300 mt-3 text-white hover:text-blue-400 hover:z-30'>
-            <Link href={`${projects[1].link}`}><a target={"_blank"}>
-            <div key={projects[1]._id} className="bg-gray-900 rounded-sm w-full">
-              <Image src={projects[1].image} height={500} width={1000} priority/>
-              <div className='p-3'>
-                <h1 className="font-extrabold text-2xl text-left">{projects[1].title}</h1>
-                <div className="font-medium text-slate-500 text-justify text-lg">{projects[1].description}</div>
-              </div>
-            </div>
-            </a></Link>
-          </div>
         
         </div>
         
         <div className='grid grid-cols-1'>
-
           <div className='hover:scale-110 duration-300 mt-3 text-white hover:text-blue-400 hover:z-30'>
-            <Link href={`${projects[2].link}`}><a target={"_blank"}>
-            <div key={projects[2]._id} className="bg-gray-900 rounded-sm w-full">
-              <Image src={projects[2].image} height={500} width={1000} priority/>
+            <Link href={`/project/${projects[1].ranid}`}><a>
+            <div key={projects[1]._id} className="bg-gray-900 rounded-sm w-full">
+              <Image src={projects[1].image} height={500} width={1000} priority/>
               <div className='p-3'>
-                <h1 className="font-extrabold text-2xl text-left">{projects[2].title}</h1>
-                <div className="font-medium text-slate-500 text-justify text-lg">{projects[2].description}</div>
-              </div>
-            </div>
-            </a></Link>
-          </div>
-
-          <div className='hover:scale-110 duration-300 mt-3 text-white hover:text-blue-400 hover:z-30'>
-            <Link href={`${projects[3].link}`}><a target={"_blank"}>
-            <div key={projects[3]._id} className="bg-gray-900 rounded-sm w-full">
-              <Image src={projects[3].image} height={500} width={1000} priority/>
-              <div className='p-3'>
-                <h1 className="font-extrabold text-2xl text-left">{projects[3].title}</h1>
-                <div className="font-medium text-slate-500 text-justify text-lg">{projects[3].description}</div>
+                <h1 className="font-extrabold text-2xl text-center">{projects[1].title}</h1>
               </div>
             </div>
             </a></Link>

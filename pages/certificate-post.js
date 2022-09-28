@@ -6,7 +6,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
 import useSWR from 'swr'
 
 export default function NewCert() {
-    const [form, setForm] = useState({title:"", description:'', link:'', image: ''})
+    const [form, setForm] = useState({title:"",ranid: randomString(6,"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), description:'', link:'', image: ''})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
@@ -26,6 +26,13 @@ export default function NewCert() {
     const auth = useSWR('/api/data', fetcher).data
     if (!auth) return <></>
     var name = false
+
+    function randomString(length, chars) {
+        var result = "";
+        for (var i = length; i > 0; --i)
+          result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
+    }
 
     const createProject = async () => {
         console.log(form)

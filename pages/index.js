@@ -17,7 +17,7 @@ export default function Index() {
   const c = useSWR('/api/certificates', fetcher)  
   const name = User()
   return(
-    <>
+    <div className='overflow-x-hidden'>
       <Head>
         <title>Home</title>
       </Head>
@@ -26,7 +26,7 @@ export default function Index() {
       <Skills/>
       <Projects/>
       <Contact/>
-    </>
+    </ div>
   )
 }  
 
@@ -107,7 +107,7 @@ function ProgressBar() {
 
   return (
     <>
-      <div className='md:p-24 px-12 pb-10 font-mono' data-aos="fade-up-right" data-aos-delay="100">
+      <div className='md:p-24 px-12 pb-10 font-mono' data-aos="fade-up" data-aos-delay="100">
         <h1 className='text-6xl text-white my-5'>Projects Language Ratio</h1>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5 grid-cols-1'>
             {skillset.map(s => {

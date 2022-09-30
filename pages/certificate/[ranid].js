@@ -34,13 +34,13 @@ export default function Certificates(){
            <section className='py-32 mx-auto max-w-3xl p-4'>
              <div className='text-center text-white text-5xl mb-10'>{details.title}</div>
              <div>
-               <Image src={details.image} height={1080} width={1920}/>
+               <Image src={details.image} height={1080} className="rounded-md" width={1920} priority/>
              </div>
              <div className='text-white mt-10 text-3xl underline underline-offset-4'>Certificate Description -</div>
              <div className='text-gray-400 mt-10 text-2xl'>{details.description}</div>
              <div className='pt-20 justify-between flex'>
-               {details.link ? <Link href={details.link}><a target={"_blank"} className="bg-black duration-300 hover:text-black hover:bg-white m-2 text-white p-4 rounded-lg w-full  text-center"><FontAwesomeIcon className='mr-2' icon={faLink} />View</a></Link> : null}
-               {name ? <Link href={`/${details._id}/edit-certificate`}><a className="bg-black duration-300 hover:text-black hover:bg-white m-2 text-white p-4 rounded-lg w-full  text-center"><FontAwesomeIcon className='mr-2' icon={faPenToSquare} />Edit</a></Link> : null}
+               {details.link ? <Link href={details.link}><a target={"_blank"} className="bg-black hover:cursor-pointer duration-300 hover:text-black hover:bg-white m-2 text-white p-4 rounded-lg w-full  text-center"><FontAwesomeIcon className='mr-2' icon={faLink} />View</a></Link> : null}
+               {name ? <Link href={`/${details._id}/edit-certificate`}><a className="bg-black hover:cursor-pointer duration-300 hover:text-black hover:bg-white m-2 text-white p-4 rounded-lg w-full  text-center"><FontAwesomeIcon className='mr-2' icon={faPenToSquare} />Edit</a></Link> : null}
              </div>
            </section>
         </>

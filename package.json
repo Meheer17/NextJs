@@ -20,6 +20,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@hapi/iron": "6.0.0",
+    "aos": "^2.3.4",
     "aws-sdk": "^2.1200.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",

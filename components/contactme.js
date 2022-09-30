@@ -17,7 +17,7 @@ export default function con() {
                 <div className="flex items-center text-gray-600 mx-auto dark:text-gray-400">
                     <FontAwesomeIcon className=' bg-inherit text-black text-4xl' icon={faLocationDot} />
                     <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                       India, Karnataka
+                       Karnataka, India
                     </div>
                 </div>
 

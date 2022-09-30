@@ -39,7 +39,7 @@ export default function Navbar() {
 
           <div className="flex justify-between">
             <div className="items-center flex">
-              <span className="text-2xl font-bold italic font-mono">Meheer</span>
+              <span className="text-2xl font-bold italic font-sans">Meheer</span>
             </div>
 
             <div className="items-center hidden md:flex">

@@ -85,18 +85,18 @@ export default function Projects() {
 
       {sorted.map(pr => {
           return (
-            <>
-              <Link href={`/project/${pr.ranid}`}>
-                <div key={pr._id} className="bg-gray-900 text-white rounded-sm w-full hover:scale-110 hover:z-30 z-10 duration-200 hover:text-sky-400">
-                  <Image src={pr.image} height={500} width={1000} priority/>
+            <div data-aos="fade-up" data-aos-delay="100">
+              <Link href={`/project/${pr.ranid}`} >
+                <div key={pr._id} className="bg-gray-900  hover:cursor-pointer text-white rounded-xl w-full hover:scale-110 hover:z-30 z-10 duration-200 hover:text-sky-400">
+                  <Image src={pr.image} className="rounded-xl" height={500} width={1000} priority/>
                   <div className='flex flex-col'>
                     <div className='p-3 pb-4'>
-                      <h1 className="font-extrabold text-2xl text-center">{pr.title}</h1>
+                      <h1 className="font-extrabold text-2xl text-center capitalize font-mono">{pr.title}</h1>
                     </div>
                   </div>
                 </div>
               </Link>
-            </>
+            </div>
           )
         })}
        </div>

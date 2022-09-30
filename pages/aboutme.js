@@ -12,7 +12,7 @@ export default function AboutMe() {
             <section className="py-24" style={{backgroundImage:"linear-gradient(90deg, rgba(24,24,35,1) 38%, rgba(0,0,0,1) 38%)"}}>
                 <div className="mx-auto max-w-xl h-screen helo"  ></div>
             </section>
-            <div className="mx-auto p-4 max-w-3xl mt-5 text-slate-400 pb-10">
+            <div className="mx-auto p-4 max-w-3xl mt-5 text-slate-400 pb-10" data-aos="fade-up" data-aos-delay="100">
                 <h1 className="text-3xl text-slate-300">How it all happened.</h1>
                 <ul className="p-2 pt-5 text-justify text-lg">
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} />On a very usual day, while scrolling down my Instagram feed, something interesting that I came across caught my eye. My eyes were filled with curiosity. This was the beginning of something new. It was Web Developing! As a curious person, I started researching the subject and found out how interesting it is.</li>
@@ -27,7 +27,7 @@ export default function AboutMe() {
                 </ul>
 
                 <h1 className="text-3xl text-slate-300 mt-10">Why I am obsessed with coding?</h1>
-                <ul className="p-2 pt-5 text-justify text-lg">
+                <ul className="p-2 pt-5 text-justify text-lg" data-aos="fade-up" data-aos-delay="100">
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> I love to do things which could make me think and break my head about it, and programming was indeed one of them. </li>
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> When I started creating APIs, this was one thing I understood and learned about myself. It was that I love to think and break my head about anything I wanna do, and my determination to complete it no matter what it takes from me!! </li>
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> Every project taught me something new. There wasn't a single project I created that hasn't taught me something new.</li>
@@ -38,7 +38,7 @@ export default function AboutMe() {
                 </ul>
 
                 <h1 className="text-3xl text-slate-300 mt-10">How I wind down.</h1>
-                <ul className="p-2 pt-5 text-justify text-lg">
+                <ul className="p-2 pt-5 text-justify text-lg" data-aos="fade-up" data-aos-delay="100">
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> I love watching anime, My all-time favourite would be One Piece and Naruto.</li>
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> I also enjoy a healthy routine and play outdoor games such as basketball and badminton.</li>
                     <li><FontAwesomeIcon className='mt-3 mr-4 text-2xl bg-black text-orange-400' icon={faAnglesRight} /> My other interest includes hanging out with friends on a nice evening.</li>

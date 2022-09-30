@@ -9,13 +9,13 @@ export default function Footer(){
           <span className="text-2xl font-bold italic font-sans">Meheer</span>
         </div>
         <ul className="flex flex-wrap items-center mb-6 text-sm text-slate-400 sm:mb-0">
-          <li><Link href="/"><a className="mr-4 hover:underline md:mr-6">Home</a></Link></li>
-          <li><Link href="/projects"><a className="mr-4 hover:underline md:mr-6">Project</a></Link></li>
-          <li><Link href="/certificates"><a className="mr-4 hover:underline md:mr-6">Certificates</a></Link></li>
-          <li><Link href="/aboutme"><a className="mr-4 underline decoration-sky-500 decoration-4 hover:underline md:mr-6">About Me</a></Link></li>
+          <li><Link href="/"><a className="mr-4 md:hover:underline md:mr-6">Home</a></Link></li>
+          <li><Link href="/projects"><a className="mr-4 md:hover:underline md:mr-6">Project</a></Link></li>
+          <li><Link href="/certificates"><a className="mr-4 md:hover:underline md:mr-6">Certificates</a></Link></li>
+          <li><Link href="/aboutme"><a className="mr-4 underline decoration-sky-500 decoration-4 md:hover:underline md:mr-6">About Me</a></Link></li>
         </ul>
       </div>
-      <div className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <Link href="/"><a className="hover:underline"></a></Link> Created By Meheer.</div>
+      <div className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <Link href="/"><a className="md:hover:underline"></a></Link> Created By Meheer.</div>
     </footer>
     
   )

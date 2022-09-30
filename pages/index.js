@@ -73,7 +73,7 @@ function AbtMe() {
 These are the values which push me forward towards achieving success.</p>
           </div>
           <div className='mt-16'>
-            <Link href={'/aboutme'}><a className="underline text-2xl font-extrabold hover:no-underline underline-offset-8 hover:bg-sky-500 p-3 rounded">About Me</a></Link>
+            <Link href={'/aboutme'}><a className="underline text-2xl font-extrabold md:hover:no-underline underline-offset-8 md:hover:bg-sky-500 p-3 rounded">About Me</a></Link>
           </div>
         </div>
           <Image src={"/new.jpg"} height={1080} width={1920}/>
@@ -139,7 +139,7 @@ function Projects() {
 
   return (
     <>
-      <div className='grid md:grid-cols-2 gap-5 grid-cols-1 md:p-16 p-5' data-aos="fade-up" data-aos-delay="100">
+      <div className='grid md:grid-cols-2 gap-5 grid-cols-1 md:p-16 p-5'>
         <div className='grid grid-rows-1'>
           
           <div>
@@ -147,10 +147,10 @@ function Projects() {
             <h1 className='text-6xl text-white mb-4'>Work I've done over the past 2 years!</h1>
           </div>
 
-          <div className='hover:scale-110 duration-300 mt-3 text-white hover:text-blue-400 hover:z-30'>
+          <div className=' duration-300 mt-3 text-white md:hover:scale-110 md:hover:z-30 md:hover:text-blue-400'>
             <Link href={`/project/${projects[0].ranid}`}><a>
-            <div key={projects[0]._id} className="bg-gray-900 rounded-xl w-full">
-              <Image src={projects[0].image} className="rounded-xl" height={500} width={1000} priority/>
+            <div key={projects[0]._id} className="bg-gray-900  duration-300 rounded-xl w-full">
+              <Image src={projects[0].image} className="rounded-xl z-10" height={500} width={1000} priority/>
               <div className='p-3'>
                 <h1 className="font-extrabold text-2xl text-center">{projects[0].title}</h1>
               </div>
@@ -162,10 +162,10 @@ function Projects() {
         </div>
         
         <div className='grid grid-cols-1'>
-          <div className='hover:scale-110 duration-300 mt-3 text-white hover:text-blue-400 hover:z-30'>
+          <div className=' mt-3 duration-300 text-white md:hover:scale-110 md:hover:z-30 md:hover:text-blue-400'>
             <Link href={`/project/${projects[1].ranid}`}><a>
             <div key={projects[1]._id} className="bg-gray-900 rounded-xl w-full">
-              <Image src={projects[1].image} className="rounded-xl" height={500} width={1000} priority/>
+              <Image src={projects[1].image} className="rounded-xl z-10" height={500} width={1000} priority/>
               <div className='p-3'>
                 <h1 className="font-extrabold text-2xl text-center">{projects[1].title}</h1>
               </div>
@@ -174,7 +174,7 @@ function Projects() {
           </div>
 
             <div className='flex justify-center mt-10'>
-              <h1 className='text-white'><Link href={'/projects'}><a className='md:text-2xl text-sm text-white p-3 border-2 duration-500  border-sky-300 hover:bg-sky-400 hover:text-gray-900 rounded'>VIEW ALL PROJECTS</a></Link></h1>
+              <h1 className='text-white'><Link href={'/projects'}><a className='md:text-2xl text-sm text-white p-3 border-2 duration-500  border-sky-300 md:hover:bg-sky-400 md:hover:text-gray-900 rounded'>VIEW ALL PROJECTS</a></Link></h1>
             </div>
 
           </div>
@@ -196,7 +196,7 @@ function Skills() {
             <p className='pt-5 text-xl text-slate-400 '>With skills over many methods of creating a website, I am the perfect person to hire when it comes to a full fledged project. Whatever your needs are, I can pretty much take on any challenge.</p>
           </div>
           <div className='text-white grid gap-10 grid-rows-2'>
-            <div className='hover:scale-110'>
+            <div className='md:hover:scale-110'>
               <div className='text-4xl md:hover:scale-110 transition ease-in-out'>
                 <FontAwesomeIcon className=' bg-black text-orange-400' icon={faHtml5} />
                 <FontAwesomeIcon className='ml-2 bg-black text-blue-400' icon={faCss3Alt} />
@@ -207,7 +207,7 @@ function Skills() {
                 Working with multiple websites and projects has given me extensive knowledge on how to create websites using the basics I've learnt over the years.
               </div>
             </div>
-            <div className='hover:scale-110'>
+            <div className='md:hover:scale-110'>
               <div className='text-4xl md:hover:scale-110 transition ease-in-out'>
                 <FontAwesomeIcon className=' bg-black text-green-400' icon={faNodeJs} />
               </div>
@@ -219,7 +219,7 @@ function Skills() {
             
           </div>
           <div className='text-white grid gap-10 grid-rows-2'>
-            <div className='hover:scale-110'>
+            <div className='md:hover:scale-110'>
               <div className='text-4xl transition ease-in-out md:hover:scale-110'>
                 <FontAwesomeIcon className=' bg-black text-green-400' icon={faEnvira} />
 
@@ -229,7 +229,7 @@ function Skills() {
                 Having fun while developing or creating APIs is the only way to succeed in it. Most importantly, be confident to face the challenges thrown at you... Which I believe I'm good at!
               </div>
             </div>
-            <div className='hover:scale-110'>
+            <div className='md:hover:scale-110'>
               <div className='text-4xl transition ease-in-out md:hover:scale-110'>
                 <FontAwesomeIcon className=' bg-black text-blue-400' icon={faBookOpenReader} />
               </div>

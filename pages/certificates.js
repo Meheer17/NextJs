@@ -30,9 +30,9 @@ export default function Certificates(){
 
       {projects.map(pr => {
           return (
-            <div className='md:hover:scale-110 md:hover:z-30 z-10 duration-200 md:hover:text-sky-400 md:hover:cursor-pointer'>
+            <div className='md:hover:scale-110 md:hover:z-30 z-10 duration-200 md:hover:cursor-pointer'>
               <Link href={`/certificate/${pr.ranid}`}>
-                <div key={pr._id} data-aos="fade-up" data-aos-delay="100" className="bg-gray-900 rounded-xl w-full duration-200 text-white">
+                <div key={pr._id} data-aos="fade-up" data-aos-delay="100" className="bg-gray-900 hover:text-sky-400 rounded-xl w-full duration-200 text-white">
                   <Image src={pr.image} className="rounded-xl" height={500} width={1000} priority/>
                   <div className='flex flex-col'>
                     <div className='p-3 pb-4'>

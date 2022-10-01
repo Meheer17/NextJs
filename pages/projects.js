@@ -85,9 +85,9 @@ export default function Projects() {
 
       {sorted.map(pr => {
           return (
-            <div className=' md:hover:cursor-pointer md:hover:scale-110 md:hover:z-30 z-10 duration-200 md:hover:text-sky-400'>
+            <div className=' md:hover:cursor-pointer md:hover:scale-110 md:hover:z-30 z-10 duration-200'>
               <Link href={`/project/${pr.ranid}`} >
-                <div key={pr._id} data-aos="fade-up" data-aos-delay="100" className="bg-gray-900 text-white rounded-xl w-full">
+                <div key={pr._id} data-aos="fade-up" data-aos-delay="100" className="bg-gray-900 hover:text-sky-400 text-white rounded-xl w-full">
                   <Image src={pr.image} className="rounded-xl hover:z-30 z-10" height={500} width={1000} priority/>
                   <div className='flex flex-col'>
                     <div className='p-3 pb-4'>

@@ -139,7 +139,7 @@ function Projects() {
 
   return (
     <>
-      <div className='grid md:grid-cols-2 gap-5 grid-cols-1 md:p-16 p-5'>
+      <div className='grid md:grid-cols-2 gap-5 grid-cols-1 md:p-16 p-5' data-aos="fade-up" data-aos-delay="100">
         <div className='grid grid-rows-1'>
           
           <div>

@@ -36,7 +36,7 @@ export default function Edit({details, fileId}) {
 
     const createProject = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/api/projects/${fileId}`, {
+            const res = await fetch(`${process.env.URL}/api/projects/${fileId}`, {
                 method: 'PUT',
                 headers:{
                     "Accept":"applocation/json",

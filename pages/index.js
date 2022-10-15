@@ -19,7 +19,7 @@ export default function Index() {
   return(
     <div className='overflow-x-hidden'>
       <Head>
-        <title>Home</title>
+        <title>Home</title>  
       </Head>
       <Intro/>
       <AbtMe/>
@@ -48,7 +48,7 @@ function Intro() {
   return (
     <div className='py-40 p-4 grid md:grid-cols-2 grid-cols-1' style={{backgroundImage:"linear-gradient(90deg, rgba(24,24,35,1) 38%, rgba(0,0,0,1) 38%)"}}>
             <div className='boxo'>
-                <Image src="/profile.jpg" width="1920" height="1200" className='z-0'/>
+                <Image src="/profile.jpg" width="1920" height="1200" className='z-0 grayscale'/>
             </div>
             <div className='md:text-6xl text-5xl font-mono text-slate-100 flex items-center z-10' data-aos="zoom-out-down">
                 <div className='font-black'>

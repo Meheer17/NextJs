@@ -43,7 +43,7 @@ export default function EditCert({details, fileId}) {
 
     const createProject = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/api/certificates/${fileId}`, {
+            const res = await fetch(`${process.env.URL}/api/certificates/${fileId}`, {
                 method: 'PUT',
                 headers:{
                     "Accept":"applocation/json",

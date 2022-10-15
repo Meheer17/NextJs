@@ -21,3 +21,9 @@
         width: 110%;
     }
 }
+
+@layer components{
+    .icon {
+        @apply mt-3 mr-4 text-2xl bg-black text-orange-400;
+    }
+}

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
+import Time from '../components/timer'
 
 export default function Navbar() {
   const [mobile, setMobile] = useState(false)
@@ -35,6 +36,7 @@ export default function Navbar() {
 
 
       <nav className="fixed w-full z-50 text-slate-400 p-3 shadow-xl border-b-2 border-gray-700" style={{backgroundImage:"linear-gradient(90deg, rgba(24,24,35,1) 38%, rgba(0,0,0,1) 38%)"}}>
+        <Time/>
         <div className="cont mx-auto px-4">
 
           <div className="flex justify-between">
@@ -56,6 +58,7 @@ export default function Navbar() {
 
         </div>
         {mobile ? <MenuMob /> : null}
+      
       </nav>
       </div>
     </>

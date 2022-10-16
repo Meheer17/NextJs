@@ -81,6 +81,9 @@ export default function Projects() {
         })}
 
       </div>
+      <div className='text-sky-200 text-center my-5 text-3xl underline underline-offset-4'>
+        {sorted.length} Projects
+      </div>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 place-content-evenly'>
 
       {sorted.map(pr => {

@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 async function main(callback) {
-    const URI = process.env.URI; // Declare MONGO_URI in your .env file
+    const URI = process.env.MONGODB_URI; // Declare MONGO_URI in your .env file
     const client = new MongoClient(URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
     try {

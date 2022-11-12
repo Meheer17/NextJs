@@ -16,6 +16,9 @@ export default function Footer(){
         </ul>
       </div>
       <div className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <Link href="/"><a className="md:hover:underline"></a></Link> Created By Meheer.</div>
+      <div className="block text-sm text-transparent sm:text-center dark:text-transparent" >
+        <Link target="_blank" href="https://icons8.com/icon/64230/promotion-window">Promotion Window</Link> icon by <Link target="_blank" href="https://icons8.com">Icons8</Link>
+      </div>
     </footer>
     
   )

@@ -69,7 +69,7 @@ export default function Navbar() {
             </div>
 
             {
-              auth.user.admin ? (
+              auth.user ? (
                 <div className="items-center gap-4 hidden md:flex">
                   <button onClick={() => {
                     signOut()

@@ -1,10 +1,29 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Time from '../components/timer'
+import { getSession } from 'next-auth/react'
+import Image from 'next/image'
+import { signOut } from "next-auth/react"
 
 export default function Navbar() {
   const [mobile, setMobile] = useState(false)
   const [theme, setTheme] = useState('light')
+  const [auth, setAuth] = useState({user: false})
+
+  useEffect(() => {
+    async function det(){
+      try {
+        const data = await getSession()
+        if(data != null){
+          setAuth(data)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    console.log(auth)
+    det()
+  })
 
   function mob() {
     mobile == false ? setMobile(true) : setMobile(false)
@@ -49,6 +68,18 @@ export default function Navbar() {
               <Link href='/projects'><a className="py-4 px-2  font-semibold transition duration-300 hover:text-blue-500">Projects</a></Link>
               <Link href='/certificates'><a className="py-4 px-2 font-semibold transition duration-300 hover:text-blue-500">Certificates</a></Link>
             </div>
+
+            {
+              auth.user.admin ? (
+                <div className="items-center gap-4 hidden md:flex">
+                  <button onClick={() => {
+                    signOut()
+                    setAuth({user: false})
+                  }}>Sign out</button>
+                  <Image src={auth.user.image} className="rounded-xl z-10" height={40} width={40} priority/> 
+                </div>
+              ) : <div className='hidden'></div>
+            }
 
             <div className="flex items-center md:hidden">
               <button className="outline-none mobile-menu-button" onClick={mob}>{MaterialSymbolsMenuRounded()}</button>

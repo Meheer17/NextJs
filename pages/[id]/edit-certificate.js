@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 import Image from 'next/image'
-import useSWR from 'swr'
-const fetcher = (...args) => fetch(...args).then(res => res.json())
-
+import { useSession } from "next-auth/react"
 
 export async function getServerSideProps(ctx) {
     const id = ctx.params.id
@@ -19,6 +17,8 @@ export default function EditCert({details, fileId}) {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
+    const { data: session, status } = useSession()
+    var asd = (status === "authenticated" && session.user.admin)
 
     useEffect(() => {
         if(isSubmitting){
@@ -29,10 +29,6 @@ export default function EditCert({details, fileId}) {
             }
         }
     }, [errors])
-
-    const auth = useSWR('/api/data', fetcher).data
-    if (!auth) return <></>
-    var name = false
 
     function randomString(length, chars) {
         var result = "";
@@ -81,7 +77,7 @@ export default function EditCert({details, fileId}) {
         }) 
     }
 
-    if(process.env.NEXT_PUBLIC_UNAME === auth.data[0].username && process.env.NEXT_PUBLIC_PASS === auth.data[0].pass){
+    if(asd){
         return(
             <> 
                 <h1 className="text-center pt-24 text-2xl text-gray-300 font-serif">Update Certificate Data {form.title}</h1>
@@ -112,8 +108,10 @@ export default function EditCert({details, fileId}) {
                }
             </>
         )
-    } else {
+    } else if(status === "unauthenticated") {
         router.push('/')
+    } else {
+        return <></>
     }
 
 }

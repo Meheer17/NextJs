@@ -13,9 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 export default function Index() {
-  const auth = useSWR('/api/data', fetcher)
   const c = useSWR('/api/certificates', fetcher)  
-  const name = User()
   return(
     <div className='overflow-x-hidden'>
       <Head>
@@ -29,19 +27,6 @@ export default function Index() {
     </ div>
   )
 }  
-
-export function User(){
-  const auth = useSWR('/api/data', fetcher).data
-  if (!auth) return <></>
-  var name = false
-
-  if(process.env.NEXT_PUBLIC_UNAME === auth.data[0].username && process.env.NEXT_PUBLIC_PASS === auth.data[0].pass){
-    name = true
-  }
-
-  return name
-
-} 
 
 function Intro() {
     

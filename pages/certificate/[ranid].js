@@ -6,25 +6,23 @@ import { useRouter } from 'next/router'
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 import { faPenToSquare, faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSession } from "next-auth/react"
 
 export default function Certificates(){
     const data = useSWR('/api/certificates', fetcher).data
-    const auth = useSWR('/api/data', fetcher).data
     const router = useRouter()
     const { ranid } = router.query
     if(!data) return <div><h1 className="text-sky-600 mb-5 pt-24 text-2xl text-center">Loading The Certificates...</h1></div>
     const projects = data.data
     var details = false
+    const { data: session, status } = useSession()
+    var name = (status === "authenticated" && session.user.admin)
     for (let i = 0; i < projects.length; i++){
       if(projects[i].ranid === ranid){
         details = projects[i]
       }   
     }
-    if (!auth) return <></>
-    var name = false
-    if(process.env.NEXT_PUBLIC_UNAME === auth.data[0].username && process.env.NEXT_PUBLIC_PASS === auth.data[0].pass){
-      name = true
-    }
+
     if(details) {
       return (
         <>
@@ -45,7 +43,9 @@ export default function Certificates(){
            </section>
         </>
        )
-    } else {
-        router.push('/certificates')
-    }
+    } else if(status === "unauthenticated") {
+      router.push('/')
+  } else {
+      return <></>
+  }
 }

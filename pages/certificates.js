@@ -3,21 +3,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import useSWR from 'swr'
 const fetcher = (...args) => fetch(...args).then(res => res.json())
-import { faPenToSquare, faLink } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Certificates(){
   const data = useSWR('/api/certificates', fetcher).data
-  const auth = useSWR('/api/data', fetcher).data
 
   if(!data) return <div><h1 className="text-sky-600 mb-5 pt-24 text-2xl text-center">Loading The Certificates...</h1></div>
   const projects = data.data
-
-  if (!auth) return <></>
-  var name = false
-  if(process.env.NEXT_PUBLIC_UNAME === auth.data[0].username && process.env.NEXT_PUBLIC_PASS === auth.data[0].pass){
-    name = true
-  }
 
   return (
     <div className='md:p-16 p-5'>

@@ -4,28 +4,17 @@ import Link from 'next/link'
 import useSWR from 'swr'
 import { useState } from 'react'
 const fetcher = (...args) => fetch(...args).then(res => res.json())
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faPenToSquare, faLink, faArrowUpShortWide } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 
 
 export default function Projects() {
   const data = useSWR('/api/projects', fetcher).data  
   const speed = useSWR('/api/certificates', fetcher)
-  const auth = useSWR('/api/data', fetcher).data
   const [ntype, setType] = useState('all')
   const skillset = []
 
   if(!data) return <div><h1 className="text-sky-600 pt-24 mb-5 text-2xl text-center">Loading The Projects...</h1></div>
   const projects = data.data
   var sorted = projects
-
-  if (!auth) return <></>
-  var name = false
-  if(process.env.NEXT_PUBLIC_UNAME === auth.data[0].username && process.env.NEXT_PUBLIC_PASS === auth.data[0].pass){
-    name = true
-  }
 
   if (ntype === "all"){
     sorted = [...projects].sort((a,b) => a.pri - b.pri)

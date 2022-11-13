@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import useSWR from 'swr'
-const fetcher = (...args) => fetch(...args).then(res => res.json())
+import { useSession } from "next-auth/react"
 
 
 export async function getServerSideProps(ctx) {
@@ -19,7 +18,8 @@ export default function Edit({details, fileId}) {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setError] = useState({})
     const router = useRouter()
-    const auth = useSWR('/api/data', fetcher).data
+    const { data: session, status } = useSession()
+    var asd = (status === "authenticated" && session.user.admin)
 
     useEffect(() => {
         if(isSubmitting){
@@ -30,9 +30,6 @@ export default function Edit({details, fileId}) {
             }
         }
     }, [errors])
-
-    if (!auth) return <></>
-    var name = false
 
     const createProject = async () => {
         try {
@@ -105,7 +102,7 @@ export default function Edit({details, fileId}) {
         }
     }
 
-    if(process.env.NEXT_PUBLIC_UNAME === auth.data[0].username && process.env.NEXT_PUBLIC_PASS === auth.data[0].pass){
+    if(asd){
         return(
             <> 
                 <h1 className="text-center pt-24 text-2xl text-gray-300 font-serif">Update Project Data {form.title}</h1>
@@ -153,8 +150,10 @@ export default function Edit({details, fileId}) {
                }
             </>
         )
-    } else {
+    } else if(status === "unauthenticated") {
         router.push('/')
+    } else {
+        return <></>
     }
 
 }

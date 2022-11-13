@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react'
-import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 import Image from 'next/image'
-const fetcher = (...args) => fetch(...args).then(res => res.json())
-import useSWR from 'swr'
+import { useSession } from "next-auth/react"
 
 export default function NewProject() {
     const [form, setForm] = useState({title:"", description:'',ranid: randomString(6,"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), learnt:"", link:'', github:'', pri:0, tags:[], image: 'Link is here'})
@@ -11,6 +9,7 @@ export default function NewProject() {
     const [errors, setError] = useState({})
     const router = useRouter()
     const [im, setIm] = useState(false)
+    const { data: session, status } = useSession()
 
     useEffect(() => {
         if(isSubmitting){
@@ -30,10 +29,6 @@ export default function NewProject() {
           result += chars[Math.floor(Math.random() * chars.length)];
         return result;
     }
-
-    const auth = useSWR('/api/data', fetcher).data
-    if (!auth) return <></>
-    var name = false
 
     const createProject = async () => {
         console.log(form)
@@ -125,8 +120,7 @@ export default function NewProject() {
         )
     }
 
-    if(process.env.NEXT_PUBLIC_UNAME === auth.data[0].username && process.env.NEXT_PUBLIC_PASS === auth.data[0].pass){
-        name = true
+    if(status === "authenticated" && session.user.admin){
         return(
             <div className='p-10'> 
                 <h1 className="text-center text-2xl text-gray-100 font-serif md:mt-16 mt-14">Create A New Project Detail</h1>
@@ -173,8 +167,10 @@ export default function NewProject() {
                }
             </div>
         )
-    } else {
+    } else if(status === "unauthenticated") {
         router.push('/')
+    } else {
+        return <></>
     }
 
 }

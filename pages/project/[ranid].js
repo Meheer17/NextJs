@@ -7,12 +7,14 @@ import { faPenToSquare, faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from 'next/router'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { useSession } from "next-auth/react"
 
 export default function Certificates(){
   const data = useSWR('/api/projects', fetcher).data
-  const auth = useSWR('/api/data', fetcher).data
   const router = useRouter()
   const { ranid } = router.query
+  const { data: session, status } = useSession()
+  var name = (status === "authenticated" && session.user.admin)
   if(!data) return <div><h1 className="text-sky-600 mb-5 pt-24 text-2xl text-center">Fetching Data...</h1></div>
   const projects = data.data
   var details = false
@@ -22,11 +24,6 @@ export default function Certificates(){
     }   
   }
 
-  if (!auth) return <></>
-  var name = false
-  if(process.env.NEXT_PUBLIC_UNAME === auth.data[0].username && process.env.NEXT_PUBLIC_PASS === auth.data[0].pass){
-    name = true
-  }
   let text = ''
   for(let i=0; i < details.tags.length; i++){
     text += details.tags[i] + ', ' 
@@ -57,8 +54,10 @@ export default function Certificates(){
         </section>
      </>
     )
-  } else {
-    router.push('/projects')
-  }
+  } else if(status === "unauthenticated") {
+    router.push('/')
+} else {
+    return <></>
+}
 
 }

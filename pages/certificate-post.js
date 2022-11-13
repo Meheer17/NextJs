@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 import Image from 'next/image'
-const fetcher = (...args) => fetch(...args).then(res => res.json())
-import useSWR from 'swr'
+import { useSession } from "next-auth/react"
 
 export default function NewCert() {
     const [form, setForm] = useState({title:"",ranid: randomString(6,"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), description:'', link:'', image: ''})
@@ -11,6 +10,7 @@ export default function NewCert() {
     const [errors, setError] = useState({})
     const router = useRouter()
     const [im, setIm] = useState(false)
+    const { data: session, status } = useSession()
 
     useEffect(() => {
         if(isSubmitting){
@@ -22,10 +22,6 @@ export default function NewCert() {
             }
         }
     }, [errors])
-
-    const auth = useSWR('/api/data', fetcher).data
-    if (!auth) return <></>
-    var name = false
 
     function randomString(length, chars) {
         var result = "";
@@ -121,7 +117,7 @@ export default function NewCert() {
             </>
         )
     }
-    if(process.env.NEXT_PUBLIC_UNAME === auth.data[0].username && process.env.NEXT_PUBLIC_PASS === auth.data[0].pass){
+    if(status === "authenticated" && session.user.admin){
         return(
             <div className='p-10'> 
                 <h1 className="text-center text-2xl text-gray-100 font-serif md:mt-16 mt-14">Create A New Certificate Detail</h1>
@@ -152,8 +148,10 @@ export default function NewCert() {
                }
             </div>
         )
-    } else {
+    } else if(status === "unauthenticated") {
         router.push('/')
+    } else {
+        return <></>
     }
 
 }

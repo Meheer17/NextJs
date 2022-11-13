@@ -21,7 +21,6 @@ export default function Navbar() {
         console.log(error)
       }
     }
-    console.log(auth)
     det()
   })
 

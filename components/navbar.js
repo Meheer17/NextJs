@@ -71,10 +71,7 @@ export default function Navbar() {
             {
               auth.user ? (
                 <div className="items-center gap-4 hidden md:flex">
-                  <button onClick={() => {
-                    signOut()
-                    setAuth({user: false})
-                  }}>Sign out</button>
+                  <Link href="/api/auth/signout" onClick={() => {setAuth({user: false})}}>Sign out</Link>
                   <Image src={auth.user.image} className="rounded-xl z-10" height={40} width={40} priority/> 
                 </div>
               ) : <div className='hidden'></div>

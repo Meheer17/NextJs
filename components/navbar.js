@@ -10,19 +10,17 @@ export default function Navbar() {
   const [theme, setTheme] = useState('light')
   const [auth, setAuth] = useState({user: false})
 
-  useEffect(() => {
-    async function det(){
-      try {
-        const data = await getSession()
-        if(data != null){
-          setAuth(data)
-        }
-      } catch (error) {
-        console.log(error)
+  async function det(){
+    try {
+      const data = await getSession()
+      if(data != null){
+        setAuth(data)
       }
+    } catch (error) {
+      console.log(error)
     }
-    det()
-  })
+  }
+  det()
 
   function mob() {
     mobile == false ? setMobile(true) : setMobile(false)

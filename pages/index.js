@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch';
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import Link from 'next/link'
 import Contact from '../components/contactme'
 
@@ -58,7 +58,7 @@ function AbtMe() {
 These are the values which push me forward towards achieving success.</p>
           </div>
           <div className='mt-16'>
-            <Link href={'/aboutme'}><a className="underline text-2xl font-extrabold md:hover:no-underline underline-offset-8 md:hover:bg-sky-500 p-3 rounded">About Me</a></Link>
+            <Link href={'/aboutme'} className="underline text-2xl font-extrabold md:hover:no-underline underline-offset-8 md:hover:bg-sky-500 p-3 rounded">About Me</Link>
           </div>
         </div>
           <Image src={"/new.jpg"} height={1080} width={1920}/>
@@ -122,53 +122,51 @@ function Projects() {
   var projects = speed.data
   projects = [...projects].sort((a,b) => a.pri - b.pri)
 
-  return (
-    <>
-      <div className='grid md:grid-cols-2 gap-5 grid-cols-1 md:p-16 p-5' data-aos="fade-up" data-aos-delay="100">
-        <div className='grid grid-rows-1'>
-          
-          <div>
-            <h1 className='text-slate-500'>MY PROJECTS</h1>
-            <h1 className='text-6xl text-white mb-4'>Work I've done over the past 2 years!</h1>
-          </div>
-
-          <div className=' duration-300 mt-3 text-white md:hover:scale-110 md:hover:z-30 md:hover:text-blue-400'>
-            <Link href={`/project/${projects[0].ranid}`}><a>
-            <div key={projects[0]._id} className="bg-gray-900  duration-300 rounded-xl w-full">
-              <Image src={projects[0].image} className="rounded-xl z-10" height={500} width={1000} priority/>
-              <div className='p-3'>
-                <h1 className="font-extrabold text-2xl text-center">{projects[0].title}</h1>
-              </div>
-            </div>
-            </a></Link>
-          </div>
-
+  return <>
+    <div className='grid md:grid-cols-2 gap-5 grid-cols-1 md:p-16 p-5' data-aos="fade-up" data-aos-delay="100">
+      <div className='grid grid-rows-1'>
         
+        <div>
+          <h1 className='text-slate-500'>MY PROJECTS</h1>
+          <h1 className='text-6xl text-white mb-4'>Work I've done over the past 2 years!</h1>
         </div>
-        
-        <div className='grid grid-cols-1'>
-          <div className=' mt-3 duration-300 text-white md:hover:scale-110 md:hover:z-30 md:hover:text-blue-400'>
-            <Link href={`/project/${projects[1].ranid}`}><a>
-            <div key={projects[1]._id} className="bg-gray-900 rounded-xl w-full">
-              <Image src={projects[1].image} className="rounded-xl z-10" height={500} width={1000} priority/>
-              <div className='p-3'>
-                <h1 className="font-extrabold text-2xl text-center">{projects[1].title}</h1>
-              </div>
+
+        <div className=' duration-300 mt-3 text-white md:hover:scale-110 md:hover:z-30 md:hover:text-blue-400'>
+          <Link href={`/project/${projects[0].ranid}`} >
+          <div key={projects[0]._id} className="bg-gray-900  duration-300 rounded-xl w-full">
+            <Image src={projects[0].image} className="rounded-xl z-10" height={500} width={1000} priority/>
+            <div className='p-3'>
+              <h1 className="font-extrabold text-2xl text-center">{projects[0].title}</h1>
             </div>
-            </a></Link>
           </div>
+          </Link>
+        </div>
 
-            <div className='flex justify-center mt-10'>
-              <h1 className='text-white'><Link href={'/projects'}><a className='md:text-2xl text-sm text-white p-3 border-2 duration-500  border-sky-300 md:hover:bg-sky-400 md:hover:text-gray-900 rounded'>VIEW ALL PROJECTS</a></Link></h1>
-            </div>
-
-          </div>
-
+      
       </div>
-      <ProgressBar/>
+      
+      <div className='grid grid-cols-1'>
+        <div className=' mt-3 duration-300 text-white md:hover:scale-110 md:hover:z-30 md:hover:text-blue-400'>
+          <Link href={`/project/${projects[1].ranid}`} >
+          <div key={projects[1]._id} className="bg-gray-900 rounded-xl w-full">
+            <Image src={projects[1].image} className="rounded-xl z-10" height={500} width={1000} priority/>
+            <div className='p-3'>
+              <h1 className="font-extrabold text-2xl text-center">{projects[1].title}</h1>
+            </div>
+          </div>
+          </Link>
+        </div>
 
-    </>
-  )
+          <div className='flex justify-center mt-10'>
+            <h1 className='text-white'><Link href={'/projects'} className='md:text-2xl text-sm text-white p-3 border-2 duration-500  border-sky-300 md:hover:bg-sky-400 md:hover:text-gray-900 rounded'>VIEW ALL PROJECTS</Link></h1>
+          </div>
+
+        </div>
+
+    </div>
+    <ProgressBar/>
+
+  </>;
 }
 
 function Skills() {

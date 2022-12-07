@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import useSWR from 'swr'
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
@@ -22,7 +22,7 @@ export default function Certificates(){
       {projects.map(pr => {
           return (
             <div className='md:hover:scale-110 md:hover:z-30 z-10 duration-200 md:hover:cursor-pointer'>
-              <Link href={`/certificate/${pr.ranid}`}>
+              <Link href={`/certificate/${pr.ranid}`} >
                 <div key={pr._id} data-aos="fade-up" data-aos-delay="100" className="bg-gray-900 hover:text-sky-400 rounded-xl w-full duration-200 text-white">
                   <Image src={pr.image} className="rounded-xl" height={500} width={1000} priority/>
                   <div className='flex flex-col'>
@@ -33,10 +33,10 @@ export default function Certificates(){
                 </div>
               </Link>
             </div>
-          )
+          );
         })}
 
       </div>
     </div>
-  )
+  );
 }

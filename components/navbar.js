@@ -28,16 +28,23 @@ export default function Navbar() {
 
   function MenuMob() {
     return (
-
       <div className='mobile-menu'>
         <ul>
-          <li><Link href="/"><a onClick={mob} className="block text-center text-smr px-2 py-4 transition duration-1000 hover:bg-blue-500"> Home</a></Link></li>
-          <li><Link href="/projects"><a onClick={mob} className="block text-center text-smr px-2 py-4 transition duration-1000 hover:bg-blue-500"> Projects</a></Link></li>
-          <li><Link href="/certificates"><a onClick={mob} className="block text-center text-smr px-2 py-4 transition duration-1000 hover:bg-blue-500"> Certificates</a></Link></li>
+          <li><Link
+            href="/"
+            onClick={mob}
+            className="block text-center text-smr px-2 py-4 transition duration-1000 hover:bg-blue-500"> Home</Link></li>
+          <li><Link
+            href="/projects"
+            onClick={mob}
+            className="block text-center text-smr px-2 py-4 transition duration-1000 hover:bg-blue-500"> Projects</Link></li>
+          <li><Link
+            href="/certificates"
+            onClick={mob}
+            className="block text-center text-smr px-2 py-4 transition duration-1000 hover:bg-blue-500"> Certificates</Link></li>
         </ul>
       </div>
-      
-    )
+    );
   }
 
   function dar() {
@@ -46,49 +53,52 @@ export default function Navbar() {
 
 
 
-  return (
-    <>
-      <div className='relative'>
+  return <>
+    <div className='relative'>
 
 
-      <nav className="fixed w-full z-50 text-slate-400 p-3 shadow-xl border-b-2 border-gray-700" style={{backgroundImage:"linear-gradient(90deg, rgba(24,24,35,1) 38%, rgba(0,0,0,1) 38%)"}}>
-        <Time/>
-        <div className="cont mx-auto px-4">
+    <nav className="fixed w-full z-50 text-slate-400 p-3 shadow-xl border-b-2 border-gray-700" style={{backgroundImage:"linear-gradient(90deg, rgba(24,24,35,1) 38%, rgba(0,0,0,1) 38%)"}}>
+      <Time/>
+      <div className="cont mx-auto px-4">
 
-          <div className="flex justify-between">
-            <div className="items-center flex">
-              <span className="text-2xl font-bold italic font-sans">Meheer</span>
-            </div>
-
-            <div className="items-center hidden md:flex">
-              <Link href='/'><a className="py-4 px-2  font-semibold transition duration-300 hover:text-blue-500">Home</a></Link>
-              <Link href='/projects'><a className="py-4 px-2  font-semibold transition duration-300 hover:text-blue-500">Projects</a></Link>
-              <Link href='/certificates'><a className="py-4 px-2 font-semibold transition duration-300 hover:text-blue-500">Certificates</a></Link>
-            </div>
-
-            {
-              auth.user ? (
-                <div className="items-center gap-4 hidden md:flex">
-                  <Link href="/api/auth/signout" onClick={() => {setAuth({user: false})}}>Sign out</Link>
-                  <Image src={auth.user.image} className="rounded-xl z-10" height={40} width={40} priority/> 
-                </div>
-              ) : <div className='hidden'></div>
-            }
-
-            <div className="flex items-center md:hidden">
-              <button className="outline-none mobile-menu-button" onClick={mob}>{MaterialSymbolsMenuRounded()}</button>
-            </div>  
-
+        <div className="flex justify-between">
+          <div className="items-center flex">
+            <span className="text-2xl font-bold italic font-sans">Meheer</span>
           </div>
 
-        </div>
-        {mobile ? <MenuMob /> : null}
-      
-      </nav>
-      </div>
-    </>
+          <div className="items-center hidden md:flex">
+            <Link
+              href='/'
+              className="py-4 px-2  font-semibold transition duration-300 hover:text-blue-500">Home</Link>
+            <Link
+              href='/projects'
+              className="py-4 px-2  font-semibold transition duration-300 hover:text-blue-500">Projects</Link>
+            <Link
+              href='/certificates'
+              className="py-4 px-2 font-semibold transition duration-300 hover:text-blue-500">Certificates</Link>
+          </div>
 
-  )
+          {
+            auth.user ? (
+              <div className="items-center gap-4 hidden md:flex">
+                <Link href="/api/auth/signout" onClick={() => {setAuth({user: false})}}>Sign out</Link>
+                <Image src={auth.user.image} className="rounded-xl z-10" height={40} width={40} priority/> 
+              </div>
+            ) : <div className='hidden'></div>
+          }
+
+          <div className="flex items-center md:hidden">
+            <button className="outline-none mobile-menu-button" onClick={mob}>{MaterialSymbolsMenuRounded()}</button>
+          </div>  
+
+        </div>
+
+      </div>
+      {mobile ? <MenuMob /> : null}
+    
+    </nav>
+    </div>
+  </>;
 }
 
 function MaterialSymbolsMenuRounded(props) {

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import Link from 'next/link'
 import useSWR from 'swr'
 import { useState } from 'react'
@@ -89,9 +89,9 @@ export default function Projects() {
                 </div>
               </Link>
             </div>
-          )
+          );
         })}
        </div>
      </div>
-   )
+  );
 }

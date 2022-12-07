@@ -47,7 +47,7 @@ export default function Certificates(){
          <div className='text-gray-400 mt-4 text-2xl capitalize'>{text}</div>
          <div className='pt-20 justify-between flex'>
            {details.link ? <Link
-             href={'https://meheer.vercel.app/'}
+             href={details.link}
              target={"_blank"}
              className="bg-black hover:cursor-pointer duration-300 hover:text-black hover:bg-white m-2 text-white p-4 rounded-lg w-full  text-center"
              ><FontAwesomeIcon className='mr-2' icon={faLink} />View</Link> : null}

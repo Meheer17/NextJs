@@ -24,7 +24,7 @@ export default function con() {
                 <div className="flex items-center mx-auto text-gray-600 dark:text-gray-400">
                     <FontAwesomeIcon className=' bg-inherit text-black text-4xl' icon={faDiscord} />
                     <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                        <a href="https://discord.gg/H5MfyFadHv" target={"_blank"}>Meheer#2192</a>
+                        Meheer#2192
                     </div>
                 </div>
 

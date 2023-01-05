@@ -4,9 +4,11 @@ import Image from "next/legacy/image";
 import useSWR from 'swr'
 import { useRouter } from 'next/router'
 const fetcher = (...args) => fetch(...args).then(res => res.json())
+import { useSession } from "next-auth/react"
+
+// import icons 
 import { faPenToSquare, faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSession } from "next-auth/react"
 
 export default function Certificates(){
     const data = useSWR('/api/certificates', fetcher).data

@@ -51,7 +51,7 @@ export default function Projects() {
     return array;
   }
   
-
+// project
   return (
     <div className='md:p-16 p-5'>
       <Head>

@@ -40,7 +40,7 @@ function Intro() {
                 <p>I'm Meheer.</p>
                 <p>A Web Developer</p>
                 <p className='text-slate-400'>Based In India.</p>
-                <p className='text-sm'>If you are looking for a person who loves coding and creating APIs, well that's ME{"HEER"}!</p>
+                <p className='text-sm'>If you are looking for a person who loves coding and creating APIs, well that's ME\{HEER\}!</p>
                 </div>
             </div>
         </div>

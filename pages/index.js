@@ -29,7 +29,6 @@ export default function Index() {
 }  
 
 function Intro() {
-  const s = String.raw`ME{HEER}`
   return (
     <div className='py-40 p-4 grid md:grid-cols-2 grid-cols-1' style={{backgroundImage:"linear-gradient(90deg, rgba(24,24,35,1) 38%, rgba(0,0,0,1) 38%)"}}>
             <div className='boxo'>
@@ -40,7 +39,7 @@ function Intro() {
                 <p>I'm Meheer.</p>
                 <p>A Web Developer</p>
                 <p className='text-slate-400'>Based In India.</p>
-                <p className='text-sm'>If you are looking for a person who loves coding and creating APIs, well that's {s}!</p>
+                <p className='text-sm'>If you are looking for a person who loves coding and creating APIs, well that's {String.raw`ME{HEER}`}!</p>
                 </div>
             </div>
         </div>

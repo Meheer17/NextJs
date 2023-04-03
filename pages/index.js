@@ -18,6 +18,7 @@ export default function Index() {
     <div className='overflow-x-hidden'>
       <Head>
         <title>Home</title>  
+        <meta name="google-site-verification" content="CKoJ1VHu8UnDlXxQ4ULZhz-1kPirZ-wQFBg-QpfDp9Q" />
       </Head>
       <Intro/>
       <AbtMe/>

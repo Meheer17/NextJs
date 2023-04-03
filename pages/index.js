@@ -179,7 +179,7 @@ function Skills() {
             <p className='pt-5 text-xl text-slate-400 '>With skills over many methods of creating a website, I am the perfect person to hire when it comes to a full fledged project. Whatever your needs are, I can pretty much take on any challenge.</p>
           </div>
           <div className='text-white grid gap-10 grid-rows-2'>
-            <div className='md:hover:scale-110'>
+            <div className='md:hover:scale-110 h-10'>
               <div className='text-4xl md:hover:scale-110 transition ease-in-out'>
                 <FontAwesomeIcon className=' bg-black text-orange-400' icon={faHtml5} />
                 <FontAwesomeIcon className='ml-2 bg-black text-blue-400' icon={faCss3Alt} />
@@ -190,7 +190,7 @@ function Skills() {
                 Working with multiple websites and projects has given me extensive knowledge on how to create websites using the basics I've learnt over the years.
               </div>
             </div>
-            <div className='md:hover:scale-110'>
+            <div className='md:hover:scale-110 h-10'>
               <div className='text-4xl md:hover:scale-110 transition ease-in-out'>
                 <FontAwesomeIcon className=' bg-black text-green-400' icon={faNodeJs} />
               </div>
@@ -202,7 +202,7 @@ function Skills() {
             
           </div>
           <div className='text-white grid gap-10 grid-rows-2'>
-            <div className='md:hover:scale-110'>
+            <div className='md:hover:scale-110 h-10'>
               <div className='text-4xl transition ease-in-out md:hover:scale-110'>
                 <FontAwesomeIcon className=' bg-black text-green-400' icon={faEnvira} />
 
@@ -212,7 +212,7 @@ function Skills() {
                 Having fun while developing or creating APIs is the only way to succeed in it. Most importantly, be confident to face the challenges thrown at you... Which I believe I'm good at!
               </div>
             </div>
-            <div className='md:hover:scale-110'>
+            <div className='md:hover:scale-110 h-10'>
               <div className='text-4xl transition ease-in-out md:hover:scale-110'>
                 <FontAwesomeIcon className=' bg-black text-blue-400' icon={faBookOpenReader} />
               </div>

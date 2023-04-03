@@ -45,7 +45,7 @@ export default function Certificates(){
          <div className='text-gray-400 mt-10 text-2xl'>{details.learnt}</div>
          <div className='text-white mt-10 text-3xl underline underline-offset-4'>Tags -</div>
          <div className='text-gray-400 mt-4 text-2xl capitalize'>{text}</div>
-         <div className='pt-20 justify-between flex h-10'>
+         <div className='pt-20 justify-between flex'>
            {details.link ? <Link
              href={details.link}
              target={"_blank"}

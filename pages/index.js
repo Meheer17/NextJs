@@ -181,7 +181,7 @@ function Skills() {
           <div className='text-white grid gap-10 grid-rows-2'>
             <div className='md:hover:scale-110 '>
               <div className='text-4xl md:hover:scale-110 transition ease-in-out'>
-                <FontAwesomeIcon className=' bg-black text-orange-400' icon={faHtml5} />
+                <FontAwesomeIcon className='bg-black text-orange-400' icon={faHtml5} />
                 <FontAwesomeIcon className='ml-2 bg-black text-blue-400' icon={faCss3Alt} />
                 <FontAwesomeIcon className='bg-slate-900 text-yellow-400 ml-2' icon={faSquareJs} />
               </div>

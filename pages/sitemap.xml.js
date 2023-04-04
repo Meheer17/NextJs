@@ -1,6 +1,6 @@
 const EXTERNAL_DATA_URL = 'https://meheer.vercel.app/';
 
-export default async function getStaticProps({ res }) {
+export default async function web({ res }) {
   // We make an API call to gather the URLs for our site
   const request = await fetch(`${EXTERNAL_DATA_URL}api/projects`);
   const posts = await request.json();

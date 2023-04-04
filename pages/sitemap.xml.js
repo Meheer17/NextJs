@@ -33,5 +33,3 @@ export async function getStaticProps({ res }) {
     props: {},
   };
 }
-
-export default SiteMap;

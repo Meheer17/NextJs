@@ -59,7 +59,7 @@ export default function Certificates(){
              href={details.github}
              target={"_blank"}
              className="bg-black hover:cursor-pointer duration-300 hover:text-black hover:bg-white m-2 text-white p-4 rounded-lg w-full text-center "
-             ><FontAwesomeIcon className='mr-2' icon={faGithub} />GitHub</Link> : null}
+             ><FontAwesomeIcon className='mr-2 h-12' icon={faGithub} />GitHub</Link> : null}
          </div>
        </section>
     </>;

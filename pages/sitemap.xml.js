@@ -1,10 +1,6 @@
 const EXTERNAL_DATA_URL = 'https://meheer.vercel.app/';
 
-function SiteMap() {
-  // getServerSideProps will do the heavy lifting
-}
-
-export async function getServerSideProps({ res }) {
+export async function getStaticProps({ res }) {
   // We make an API call to gather the URLs for our site
   const request = await fetch(`${EXTERNAL_DATA_URL}api/projects`);
   const posts = await request.json();
@@ -30,7 +26,7 @@ export async function getServerSideProps({ res }) {
 
   res.setHeader('Content-Type', 'text/xml');
   // we send the XML to the browser
-  res.write(sitemap);
+  res.send(sitemap);
   res.end();
 
   return {

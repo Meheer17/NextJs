@@ -50,16 +50,16 @@ export default function Certificates(){
              href={details.link}
              target={"_blank"}
              className="bg-black hover:cursor-pointer duration-300 hover:text-black hover:bg-white m-2 text-white p-4 rounded-lg w-full  text-center"
-             ><FontAwesomeIcon className='mr-2' icon={faLink} />View</Link> : null}
+             ><FontAwesomeIcon className='mr-2 h-5' icon={faLink} />View</Link> : null}
            {name ? <Link
              href={`/${details._id}/edit-projects`}
              className="bg-black hover:cursor-pointer duration-300 hover:text-black hover:bg-white m-2 text-white p-4 rounded-lg w-full  text-center"
-             ><FontAwesomeIcon className='mr-2' icon={faPenToSquare} />Edit</Link> : null}
+             ><FontAwesomeIcon className='mr-2 h-5' icon={faPenToSquare} />Edit</Link> : null}
            {details.github ? <Link
              href={details.github}
              target={"_blank"}
              className="bg-black hover:cursor-pointer duration-300 hover:text-black hover:bg-white m-2 text-white p-4 rounded-lg w-full text-center "
-             ><FontAwesomeIcon className='mr-2 h-12' icon={faGithub} />GitHub</Link> : null}
+             ><FontAwesomeIcon className='mr-2 h-5' icon={faGithub} />GitHub</Link> : null}
          </div>
        </section>
     </>;

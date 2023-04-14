@@ -6,14 +6,14 @@ import { useState } from 'react'
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 
-export default function Projects() {
-  const data = useSWR('/api/projects', fetcher).data  
+export default function Projects({posts}) {
+  // const data = useSWR('/api/projects', fetcher).data  
   const speed = useSWR('/api/certificates', fetcher)
   const [ntype, setType] = useState('all')
   const skillset = []
 
   if(!data) return <div><h1 className="text-sky-600 pt-24 mb-5 text-2xl text-center">Loading The Projects...</h1></div>
-  const projects = data.data
+  const projects = posts.data
   var sorted = projects
 
   if (ntype === "all"){
@@ -94,4 +94,19 @@ export default function Projects() {
        </div>
      </div>
   );
+}
+
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const res = await fetch('${process.env.URL}/api/projects')
+  const posts = await res.json()
+
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      posts,
+    },
+  }
 }

@@ -93,7 +93,7 @@ function ProgressBar() {
   return (
     <>
       <div className='md:p-24 px-12 pb-10 font-mono' data-aos="fade-up" data-aos-delay="100">
-        <h1 className='text-6xl text-white my-5'>Projects Language Ratio</h1>
+        <h1 className='text-6xl text-white my-5'>Projects Skill Ratio</h1>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5 grid-cols-1'>
             {skillset.map(s => {
               return (
